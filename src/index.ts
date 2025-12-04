@@ -1,5 +1,9 @@
-import { createRouter } from "stencil-router-v2"
+import { Context as _Context } from "./Context"
+import { Site as _Site } from "./Site"
+// eslint-disable-next-line prettierx/options
+export type * from "./components.d.ts"
 
-export { Components, JSX } from "./components"
-
-export const Router = createRouter()
+export namespace binotype {
+	export import Context = _Context
+	export import Site = _Site
+}
