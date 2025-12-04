@@ -1,6 +1,6 @@
 import { Fragment, FunctionalComponent, h } from "@stencil/core"
-import { model } from ".."
 import { Context } from "../Context"
+import { Site } from "../Site"
 import { Footer } from "./Footer"
 import { Head } from "./Head"
 import { Header } from "./Header"
@@ -30,6 +30,6 @@ export const Page: FunctionalComponent<Readonly<Page.Properties>> = ({ site }) =
 
 export namespace Page {
 	export interface Properties {
-		site: model.Site
+		site: Site
 	}
 }

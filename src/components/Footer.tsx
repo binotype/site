@@ -1,5 +1,5 @@
 import { FunctionalComponent, h } from "@stencil/core"
-import { model } from ".."
+import { Context } from "../Context"
 
 export const Footer: FunctionalComponent<Footer.Properties> = ({ context }) =>
 	context.design?.overrides?.footer ? (
@@ -11,6 +11,6 @@ export const Footer: FunctionalComponent<Footer.Properties> = ({ context }) =>
 	)
 export namespace Footer {
 	export interface Properties {
-		context: model.Context
+		context: Context
 	}
 }

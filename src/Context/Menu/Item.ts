@@ -8,6 +8,7 @@ export interface Item {
 }
 export namespace Item {
 	export function load(page: Site.Page, path: Site.Page.Path, current: string): Item | undefined {
+		console.log("Loading menu item for page:", page, "with path:", path.toString(), "and current:", current)
 		return page.menu === false
 			? undefined
 			: {

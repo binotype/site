@@ -1,3 +1,5 @@
+import { isly } from "isly"
+
 export class Path {
 	get empty(): boolean {
 		return this.parts.length == 0
@@ -40,4 +42,19 @@ export class Path {
 			: id.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())
 	}
 }
-export namespace Path {}
+export namespace Path {
+	export const { is, flawed, type } = isly
+		.object<Path>(
+			{
+				empty: isly.boolean().readonly(),
+				leaf: isly.boolean().readonly(),
+				head: isly.string().optional().readonly(),
+				tail: isly.any().readonly(),
+				getId: isly.function(),
+				append: isly.function(),
+				toString: isly.function(),
+			},
+			"binotype.Site.Page.Path"
+		)
+		.bind()
+}

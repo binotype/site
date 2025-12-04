@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html dir="ltr" lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<script type="module" src="/build/binotype.esm.js"></script>
-		<script nomodule src="/build/binotype.js"></script>
-	</head>
-	<body>
-		<binotype-site
-			site='{
+{
 	"url": "https://example.com",
 	"language": "en-US",
 	"title": "Sample Blog",
@@ -87,7 +78,4 @@
 			}
 		}
 	}
-}'
-		></binotype-site>
-	</body>
-</html>
+}
