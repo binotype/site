@@ -19,9 +19,9 @@
 			"types": "./dist/components/binotype-site.d.ts"
 		},
 		"./loader": {
+			"types": "./loader/index.d.ts",
 			"import": "./loader/index.js",
-			"require": "./loader/index.cjs",
-			"types": "./loader/index.d.ts"
+			"require": "./loader/index.cjs"
 		}
 	},
 	"repository": {
@@ -40,9 +40,12 @@
 	"scripts": {
 		"build": "stencil build",
 		"start": "stencil build --dev --watch --serve",
-		"test": "stencil test --spec --e2e",
-		"test.watch": "stencil test --spec --e2e --watchAll",
-		"generate": "stencil generate"
+		"test": "vitest --run",
+		"test.watch": "vitest --watch",
+		"generate": "stencil generate",
+		"lint": "eslint src --ext .ts,.tsx",
+		"format": "prettierx --write \"src/**/*.{ts,tsx,js,jsx,json,css,scss,md}\"",
+		"verify": "npm run lint && npm run build && npm run test"
 	},
 	"devDependencies": {
 		"@stencil/core": "4.38.3",
@@ -57,6 +60,8 @@
 		"eslint": "^8.56.0",
 		"eslint-plugin-prettierx": "github:utily/eslint-plugin-prettierx#utily-20231004",
 		"eslint-plugin-simple-import-sort": "^12.1.1",
+		"happy-dom": "^20.0.11",
+		"jsdom": "^27.0.1",
 		"prettierx": "github:utily/prettierx#utily-20231004",
 		"stencil-router-v2": "^0.6.0",
 		"typescript": "5.9.3"
@@ -64,6 +69,10 @@
 	"dependencies": {
 		"isly": "^1.4.0",
 		"isoly": "^3.1.4",
-		"tidily": "^0.2.6"
+		"tidily": "^0.2.6",
+		"unplugin-stencil": "^0.4.1",
+		"vite": "^6.4.1",
+		"vitest": "^4.0.15",
+		"webdriverio": "^9.21.0"
 	}
 }

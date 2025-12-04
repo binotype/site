@@ -1,19 +1,10 @@
+import stencil from "unplugin-stencil/vite"
 import { defineConfig } from "vitest/config"
 
 export default defineConfig({
 	test: {
-		typecheck: {
-			tsconfig: "./tsconfig.json",
-		},
-		coverage: {
-			reporter: ["text", "json", "html"],
-			provider: "istanbul",
-		},
+		include: ["src/**/*.{test,spec}.{js,ts,tsx}"],
 		globals: true,
-		include: ["**/*.spec.[tj]s"],
-		testTimeout: 20000,
-		isolate: false,
-		exclude: ["node_modules", "dist", "www"],
 		server: {
 			deps: {
 				inline: [
@@ -37,4 +28,5 @@ export default defineConfig({
 			},
 		},
 	},
+	plugins: [stencil()],
 })
