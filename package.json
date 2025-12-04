@@ -1,6 +1,6 @@
 {
 	"name": "@binotype/site",
-	"version": "0.0.1-alpha.0",
+	"version": "0.1.0",
 	"license": "MIT",
 	"description": "Component library for building Binotype web sites.",
 	"main": "dist/index.cjs.js",
