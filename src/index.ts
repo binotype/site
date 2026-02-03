@@ -15,7 +15,7 @@ import { Context as _Context } from "./Context"
 import { Site as _Site } from "./Site"
 
 export namespace binotype {
-  export import Article = _Article
+	export import Article = _Article
 	export import Footer = _Footer
 	export import Head = _Head
 	export import Header = _Header
@@ -29,3 +29,16 @@ export namespace binotype {
 	export import Context = _Context
 	export import Site = _Site
 }
+export import Article = _Article
+export import Footer = _Footer
+export import Head = _Head
+export import Header = _Header
+export import Link = _Link
+export import List = _List
+export import Menu = _Menu
+export import Navigation = _Navigation
+export import Page = _Page
+export import SelfLink = _SelfLink
+export import Single = _Single
+export import Context = _Context
+export import Site = _Site
