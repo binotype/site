@@ -2,28 +2,49 @@
 	"name": "@binotype/site",
 	"version": "0.1.0",
 	"license": "MIT",
+	"private": false,
 	"description": "Component library for building Binotype web sites.",
 	"main": "dist/index.cjs.js",
 	"module": "dist/index.js",
+	"es2015": "dist/esm/index.js",
+	"es2017": "dist/esm/index.js",
 	"types": "dist/types/index.d.ts",
 	"collection": "dist/collection/collection-manifest.json",
 	"collection:main": "dist/collection/index.js",
-	"unpkg": "dist/binotype/binotype.esm.js",
+	"unpkg": "dist/binotype-site/binotype-site.esm.js",
 	"exports": {
 		".": {
-			"import": "./dist/binotype/binotype.esm.js",
-			"require": "./dist/binotype/binotype.cjs.js"
+			"default": "./dist/index.mjs",
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs.js",
+			"types": "./dist/types/index.d.ts"
 		},
-		"./binotype-site": {
-			"import": "./dist/components/binotype-site.js",
-			"types": "./dist/components/binotype-site.d.ts"
+		"./components/*.js": {
+			"import": "./dist/components/*.js",
+			"types": "./dist/types/components/*.d.ts"
+		},
+		"./components": {
+			"default": "./dist/index.js",
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs.js",
+			"types": "./dist/types/components.d.ts"
+		},
+		"./hydrate": {
+			"default": "./dist/hydrate/index.mjs",
+			"import": "./dist/hydrate/index.mjs",
+			"require": "./dist/hydrate/index.js",
+			"types": "./dist/hydrate/index.d.ts"
 		},
 		"./loader": {
-			"types": "./loader/index.d.ts",
-			"import": "./loader/index.js",
-			"require": "./loader/index.cjs"
+			"default": "./dist/loader/index.js",
+			"import": "./dist/loader/index.js",
+			"require": "./dist/loader/index.cjs",
+			"types": "./dist/loader/index.d.ts"
 		}
 	},
+	"files": [
+		"dist/"
+	],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/binotype/site.git"
@@ -32,11 +53,6 @@
 		"url": "https://github.com/binotype/site/issues"
 	},
 	"homepage": "https://github.com/binotype/site/",
-	"private": false,
-	"files": [
-		"dist/",
-		"loader/"
-	],
 	"scripts": {
 		"build": "stencil build",
 		"start": "stencil build --dev --watch --serve",
@@ -48,9 +64,9 @@
 		"verify": "npm run lint && npm run build && npm run test"
 	},
 	"devDependencies": {
-		"@stencil/core": "4.38.3",
-		"@stencil/sass": "^3.2.3",
-		"@types/node": "^24.10.1",
+		"@stencil/core": "4.41.2",
+		"@stencil/sass": "3.2.3",
+		"@types/node": "25.0.9",
 		"@types/showdown": "^2.0.6",
 		"@typescript-eslint/eslint-plugin": "^8.48.1",
 		"@typescript-eslint/parser": "^8.48.1",
@@ -64,9 +80,12 @@
 		"jsdom": "^27.0.1",
 		"prettierx": "github:utily/prettierx#utily-20231004",
 		"stencil-router-v2": "^0.6.0",
-		"typescript": "5.9.3"
+		"typescript": "5.9.3",
+		"sass": "1.97.2",
+		"stencil-inline-svg": "1.1.0"
 	},
 	"dependencies": {
+		"tslib": "2.8.1",
 		"isly": "^1.4.0",
 		"isoly": "^3.1.4",
 		"tidily": "^0.2.6",
