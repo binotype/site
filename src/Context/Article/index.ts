@@ -19,7 +19,7 @@ export namespace Article {
 	export function load(
 		page: Site.Page & { path: Path; mode: Article.Mode },
 		design: Site.Design,
-		count?: number
+		count?: number,
 	): Article {
 		console.log("Loading article:", page.path.toString(), "with mode:", page.mode, "with page:", page)
 		return {
@@ -35,7 +35,7 @@ export namespace Article {
 					.filter(([, page]) => !page.draft && (!page.published || page.published <= isoly.DateTime.now()))
 					.sort((left, right) => (right[1].published ?? "z").localeCompare(left[1].published ?? "z"))
 					.sort(
-						(left, right) => (right[1].weight ?? Number.MAX_SAFE_INTEGER) - (left[1].weight ?? Number.MAX_SAFE_INTEGER)
+						(left, right) => (right[1].weight ?? Number.MAX_SAFE_INTEGER) - (left[1].weight ?? Number.MAX_SAFE_INTEGER),
 					)
 					.slice(0, count ?? Number.MAX_SAFE_INTEGER)
 					.map(([id, subpage]: [string, Site.Page]) =>
@@ -45,8 +45,8 @@ export namespace Article {
 								path: page.path.append(id),
 								mode: design.list?.mode || "list",
 							},
-							design
-						)
+							design,
+						),
 					),
 		}
 	}

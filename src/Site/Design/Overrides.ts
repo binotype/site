@@ -17,7 +17,7 @@ export namespace Overrides {
 					}>
 				>(),
 			},
-			"binotype.Site.Design.Overrides"
+			"binotype.Site.Design.Overrides",
 		)
 		.bind()
 }

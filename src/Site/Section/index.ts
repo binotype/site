@@ -13,7 +13,7 @@ export namespace Section {
 				type: isly.string().optional(),
 				content: isly.string(),
 			},
-			"binotype.Site.Section"
+			"binotype.Site.Section",
 		)
 		.bind()
 }

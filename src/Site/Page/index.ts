@@ -31,7 +31,7 @@ export namespace Page {
 				content: isly.union(isly.string(), isly.record(isly.string(), Section.type)).optional(),
 				pages: isly.record(isly.string(), Page.type).optional(),
 			}),
-		"binotype.Site.Page"
+		"binotype.Site.Page",
 	)
 
 	export const { is, flawed } = type.bind()

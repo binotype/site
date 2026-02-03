@@ -39,7 +39,7 @@ export namespace Design {
 					.optional(),
 				overrides: Overrides.type.optional(),
 			},
-			"binotype.Site.Design"
+			"binotype.Site.Design",
 		)
 		.bind()
 }

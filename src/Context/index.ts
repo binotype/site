@@ -35,21 +35,22 @@ export class Context {
 					title: "Not Found",
 					content: "The requested page was not found.",
 				},
-				this.site.design
+				this.site.design,
 			))
 	}
-	private constructor(private readonly site: Site, path: Site.Page.Path | string) {
+	private constructor(
+		private readonly site: Site,
+		path: Site.Page.Path | string,
+	) {
 		this.path = typeof path == "string" ? Site.Page.Path.parse(path) : path
 	}
 	load(
 		path: Site.Page.Path | string | undefined,
 		mode: Context.Article.Mode = "full",
-		count?: number
+		count?: number,
 	): Context.Article | undefined {
-		if (!(path instanceof Site.Page.Path))
-			path = Site.Page.Path.parse(path ?? "")
-		if (path.empty && this.site.design.home?.section)
-			path = Site.Page.Path.parse(this.site.design.home.section)
+		if (!(path instanceof Site.Page.Path)) path = Site.Page.Path.parse(path ?? "")
+		if (path.empty && this.site.design.home?.section) path = Site.Page.Path.parse(this.site.design.home.section)
 		const page = Site.Page.locate(this.site.page, path)
 		return (
 			page &&
@@ -60,7 +61,7 @@ export class Context {
 					mode: mode,
 				},
 				this.site.design,
-				count
+				count,
 			)
 		)
 	}

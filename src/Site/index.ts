@@ -32,7 +32,7 @@ export namespace Site {
 				design: Design.type,
 				page: Page.type,
 			},
-			"binotype.Site"
+			"binotype.Site",
 		)
 		.bind()
 }

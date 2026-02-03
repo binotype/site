@@ -15,10 +15,10 @@ export const Head: FunctionalComponent<Readonly<Head.Properties>> = ({ context }
 			...(context.design?.styles?.map(style =>
 				isUrl(style)
 					? { tag: "link", attributes: { rel: "stylesheet", href: style } }
-					: { tag: "style", content: style }
+					: { tag: "style", content: style },
 			) ?? []),
 			...(context.design?.scripts?.map(script =>
-				isUrl(script) ? { tag: "script", attributes: { src: script } } : { tag: "script", content: script }
+				isUrl(script) ? { tag: "script", attributes: { src: script } } : { tag: "script", content: script },
 			) ?? []),
 			{ tag: "meta", attributes: { property: "og:title", content: context.title } },
 			{ tag: "meta", attributes: { property: "og:description", content: context.description } },
@@ -49,10 +49,8 @@ interface Element {
 }
 function createElement(element: Element): HTMLElement {
 	const result = document.createElement(element.tag)
-	if (element.attributes)
-		Object.entries(element.attributes).forEach(([key, value]) => result.setAttribute(key, value))
-	if (element.content)
-		result.appendChild(document.createTextNode(element.content))
+	if (element.attributes) Object.entries(element.attributes).forEach(([key, value]) => result.setAttribute(key, value))
+	if (element.content) result.appendChild(document.createTextNode(element.content))
 	return result
 }
 /*

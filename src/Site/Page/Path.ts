@@ -31,14 +31,14 @@ export class Path {
 	}
 	static getId(id: string, casing: "snake" | "camel" = "snake"): string {
 		return casing == "snake"
-			? id
+			? (id
 					.replace(/([a-z0-9])([A-Z])/g, "$1-$2")
 					.toLowerCase()
 					.normalize("NFKD")
 					.replace(/[\u0300-\u036f]/g, "")
 					.replace(/[^a-z0-9-]+/g, "-")
 					.replace(/-+/g, "-")
-					.replace(/^-+|-+$/g, "") ?? "untitled"
+					.replace(/^-+|-+$/g, "") ?? "untitled")
 			: id.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())
 	}
 }
@@ -54,7 +54,7 @@ export namespace Path {
 				append: isly.function(),
 				toString: isly.function(),
 			},
-			"binotype.Site.Page.Path"
+			"binotype.Site.Page.Path",
 		)
 		.bind()
 }

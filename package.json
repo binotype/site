@@ -60,7 +60,7 @@
 		"test.watch": "vitest --watch",
 		"generate": "stencil generate",
 		"lint": "eslint src --ext .ts,.tsx",
-		"format": "prettierx --write \"src/**/*.{ts,tsx,js,jsx,json,css,scss,md}\"",
+		"format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,scss,md}\"",
 		"verify": "npm run lint && npm run build && npm run test"
 	},
 	"devDependencies": {

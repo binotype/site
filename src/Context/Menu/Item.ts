@@ -22,6 +22,6 @@ export namespace Item {
 								.map(([key, childPage]) => Item.load(childPage, path.append(key), current))
 								.filter((item): item is Item => item != undefined)
 						: [],
-			  }
+				}
 	}
 }
