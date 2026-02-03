@@ -1,4 +1,3 @@
-// eslint-disable-next-line prettierx/options
 export type * from "./components.d.ts"
 import { Article as _Article } from "./components/Article"
 import { Footer as _Footer } from "./components/Footer"
