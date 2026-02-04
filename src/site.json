@@ -53,6 +53,21 @@
 					}
 				}
 			},
+      "home": {
+        "title": "Home",
+        "content": {
+          "section1": {
+            "title": "Welcome to My Blog",
+            "weight": 0,
+            "content": "<p>This is the home page of my sample blog. Here you can find articles on various topics related to software development, technology, and professional insights.</p>"
+          },
+          "section2": {
+            "title": "Latest Articles",
+            "weight": 1,
+            "content": "<p>Check out the latest articles below:</p>\n<ul>\n  <li><a href=\"/article/sample-post\">Sample Post</a></li>\n  <li><a href=\"/article/another-sample\">Another Sample Post</a></li>\n</ul>"
+          }
+        }
+      },
 			"talk": {
 				"title": "Talks",
 				"pages": {}

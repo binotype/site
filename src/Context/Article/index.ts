@@ -31,7 +31,7 @@ export namespace Article {
 				typeof page.content == "string" && (page.mode == "full" || page.mode == "body") ? page.content : undefined,
 			// summary: page.content ? String(page.content).slice(0, 200) : "",
 			sections: Object.entries(
-				page.mode == "list" && page.pages ? page.pages : typeof page.content == "object" ? page.content : {},
+				typeof page.content == "object" ? page.content : page.mode == "list" && page.pages ? page.pages : {},
 			)
 				.filter(([, page]) => !page.draft && (!page.published || page.published <= isoly.DateTime.now()))
 				.sort((left, right) => (right[1].published ?? "z").localeCompare(left[1].published ?? "z"))
@@ -44,7 +44,7 @@ export namespace Article {
 						{
 							...subpage,
 							path: page.path.append(id),
-							mode: design.list?.mode || "list",
+							mode: typeof page.content == "object" ? "full" : design.list?.mode || "list",
 						},
 						design,
 					),
