@@ -29,6 +29,10 @@ export const config: Config = {
 			generateTypeDeclarations: true,
 		},
 		{
+			type: "dist-hydrate-script",
+			dir: "dist/hydrate",
+		},
+		{
 			type: "docs-readme",
 		},
 		{
