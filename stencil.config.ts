@@ -22,18 +22,11 @@ export const config: Config = {
 	},
 	outputTargets: [
 		{
-			type: "dist",
-		},
-		{
 			type: "dist-custom-elements",
 			dir: "dist/components",
-			customElementsExportBehavior: "single-export-module",
+			customElementsExportBehavior: "auto-define-custom-elements",
 			externalRuntime: false,
-			generateTypeDeclarations: false,
-		},
-		{
-			type: "dist-hydrate-script",
-			dir: "dist/hydrate",
+			generateTypeDeclarations: true,
 		},
 		{
 			type: "docs-readme",
@@ -41,11 +34,6 @@ export const config: Config = {
 		{
 			type: "docs-vscode",
 			file: "dist/docs/components-site-core-vscode.json",
-		},
-		{
-			type: "www",
-			dir: "dist/www",
-			serviceWorker: null,
 		},
 	],
 	plugins: [inlineSvg(), sass()],

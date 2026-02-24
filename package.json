@@ -9,7 +9,7 @@
 	"module": "dist/index.js",
 	"es2015": "dist/esm/index.js",
 	"es2017": "dist/esm/index.js",
-	"types": "dist/types/index.d.ts",
+	"types": "dist/components/index.d.ts",
 	"collection": "dist/collection/collection-manifest.json",
 	"collection:main": "dist/collection/index.js",
 	"unpkg": "dist/binotype-site/binotype-site.esm.js",
@@ -23,6 +23,10 @@
 		"./components/*.js": {
 			"import": "./dist/components/*.js",
 			"types": "./dist/types/components/*.d.ts"
+		},
+		"./components/binotype-site": {
+			"import": "./dist/components/binotype-site.js",
+			"types": "./dist/types/components/binotype-site.d.ts"
 		},
 		"./components": {
 			"default": "./dist/index.js",
