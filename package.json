@@ -12,7 +12,7 @@
 	"types": "dist/components/index.d.ts",
 	"collection": "dist/collection/collection-manifest.json",
 	"collection:main": "dist/collection/index.js",
-	"unpkg": "dist/binotype-site/binotype-site.esm.js",
+	"unpkg": "dist/binotype/binotype.esm.js",
 	"exports": {
 		".": {
 			"import": "./dist/components/index.js",
@@ -25,6 +25,10 @@
 		"./binotype-site": {
 			"import": "./dist/components/binotype-site.js",
 			"types": "./dist/components/binotype-site.d.ts"
+		},
+		"./collection": {
+			"import": "./dist/collection/index.js",
+			"types": "./dist/collection/index.d.ts"
 		},
 		"./hydrate": {
 			"import": "./dist/hydrate/index.js",
