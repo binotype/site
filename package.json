@@ -15,36 +15,12 @@
 	"unpkg": "dist/binotype-site/binotype-site.esm.js",
 	"exports": {
 		".": {
-			"default": "./dist/index.mjs",
-			"import": "./dist/index.mjs",
-			"require": "./dist/index.cjs.js",
-			"types": "./dist/types/index.d.ts"
+			"import": "./dist/components/index.js",
+			"types": "./dist/components/index.d.ts"
 		},
-		"./components/*.js": {
-			"import": "./dist/components/*.js",
-			"types": "./dist/types/components/*.d.ts"
-		},
-		"./components/binotype-site": {
+		"./binotype-site": {
 			"import": "./dist/components/binotype-site.js",
-			"types": "./dist/types/components/binotype-site.d.ts"
-		},
-		"./components": {
-			"default": "./dist/index.js",
-			"import": "./dist/index.js",
-			"require": "./dist/index.cjs.js",
-			"types": "./dist/types/components.d.ts"
-		},
-		"./hydrate": {
-			"default": "./dist/hydrate/index.mjs",
-			"import": "./dist/hydrate/index.mjs",
-			"require": "./dist/hydrate/index.js",
-			"types": "./dist/hydrate/index.d.ts"
-		},
-		"./loader": {
-			"default": "./dist/loader/index.js",
-			"import": "./dist/loader/index.js",
-			"require": "./dist/loader/index.cjs",
-			"types": "./dist/loader/index.d.ts"
+			"types": "./dist/components/binotype-site.d.ts"
 		}
 	},
 	"files": [
@@ -69,22 +45,22 @@
 		"verify": "npm run lint && npm run build && npm run test"
 	},
 	"devDependencies": {
-		"@eslint/eslintrc": "^3.3.3",
-		"@eslint/js": "^9.39.2",
-		"@stencil/core": "4.42.0",
+		"@eslint/eslintrc": "^0.1.0",
+		"@eslint/js": "^10.0.1",
+		"@stencil/core": "4.43.1",
 		"@stencil/sass": "3.2.3",
-		"@types/node": "25.2.0",
+		"@types/node": "25.3.0",
 		"@types/showdown": "^2.0.6",
-		"@typescript-eslint/eslint-plugin": "^8.54.0",
-		"@typescript-eslint/parser": "^8.54.0",
+		"@typescript-eslint/eslint-plugin": "^8.56.1",
+		"@typescript-eslint/parser": "^8.56.1",
 		"@vitest/browser": "^4.0.18",
 		"@vitest/browser-webdriverio": "^4.0.18",
 		"@vitest/coverage-istanbul": "^4.0.18",
-		"eslint": "^9.39.2",
+		"eslint": "^10.0.2",
 		"eslint-plugin-prettier": "^5.5.5",
 		"eslint-plugin-simple-import-sort": "^12.1.1",
-		"happy-dom": "^20.5.0",
-		"jsdom": "^28.0.0",
+		"happy-dom": "^20.7.0",
+		"jsdom": "^28.1.0",
 		"prettier": "^3.8.1",
 		"sass": "1.97.3",
 		"stencil-inline-svg": "1.1.0",
@@ -99,6 +75,6 @@
 		"unplugin-stencil": "^0.4.1",
 		"vite": "^7.3.1",
 		"vitest": "^4.0.18",
-		"webdriverio": "^9.23.3"
+		"webdriverio": "^6.3.5"
 	}
 }
