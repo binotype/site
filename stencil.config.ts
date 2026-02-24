@@ -24,9 +24,10 @@ export const config: Config = {
 		{
 			type: "dist-custom-elements",
 			dir: "dist/components",
-			customElementsExportBehavior: "auto-define-custom-elements",
+			customElementsExportBehavior: "bundle",
 			externalRuntime: false,
 			generateTypeDeclarations: true,
+			includeGlobalScripts: true,
 		},
 		{
 			type: "dist-hydrate-script",

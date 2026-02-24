@@ -18,6 +18,10 @@
 			"import": "./dist/components/index.js",
 			"types": "./dist/components/index.d.ts"
 		},
+		"./components": {
+			"import": "./dist/components/index.js",
+			"types": "./dist/components/index.d.ts"
+		},
 		"./binotype-site": {
 			"import": "./dist/components/binotype-site.js",
 			"types": "./dist/components/binotype-site.d.ts"
