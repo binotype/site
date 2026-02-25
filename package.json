@@ -51,8 +51,8 @@
 	},
 	"homepage": "https://github.com/binotype/site/",
 	"scripts": {
-		"build": "stencil build",
-		"start": "stencil build --dev --watch --serve",
+		"build": "stencil build --prerender",
+		"start": "stencil build --dev --watch --serve --prerender",
 		"test": "vitest --run",
 		"test.watch": "vitest --watch",
 		"generate": "stencil generate",

@@ -43,6 +43,13 @@ export const config: Config = {
 			type: "docs-vscode",
 			file: "dist/docs/components-site-core-vscode.json",
 		},
+		{
+			type: "www",
+			// comment the following line to disable service workers in production
+			serviceWorker: null,
+			baseUrl: "https://site.binotype.org/",
+			prerenderConfig: "./prerender.config.ts",
+		},
 	],
 	plugins: [inlineSvg(), sass()],
 	testing: {
