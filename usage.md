@@ -228,3 +228,10 @@ stencil build --prerender
 **Prerendering issues**: Make sure your Site configuration is complete and doesn't rely on browser-only APIs.
 
 **Type errors**: Import the necessary types: `import type { Site } from "@binotype/site"`
+
+**SSG HTMLElement conflicts**: If you get `Cannot set property HTMLElement of #<MockWindow>` errors during static site generation, the polyfills are now automatically disabled during SSG. If you need the polyfills in your browser environment, optionally import them:
+
+```typescript
+// In your main application file (only if needed)
+import "@binotype/site/polyfill"
+```

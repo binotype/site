@@ -1,29 +1,40 @@
 {
-	"compilerOptions": {
-		"allowSyntheticDefaultImports": true,
-		"allowUnreachableCode": false,
-		"declaration": false,
-		"experimentalDecorators": true,
-		"lib": ["dom", "es2022"],
-		"moduleResolution": "bundler",
-		"module": "esnext",
-		"target": "es2022",
-		"noUnusedLocals": true,
-		"noUnusedParameters": false,
-		"noImplicitAny": true,
-		"removeComments": true,
-		"skipLibCheck": true,
-		"preserveConstEnums": true,
-		"forceConsistentCasingInFileNames": true,
-		"noImplicitThis": true,
-		"strictNullChecks": true,
-		"sourceMap": true,
-		"resolveJsonModule": true,
-		"jsx": "react",
-		"jsxFactory": "h",
-		"jsxFragmentFactory": "h.Fragment",
-		"types": ["node", "vitest/globals"]
-	},
-	"include": ["src"],
-	"exclude": ["node_modules"]
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "declaration": false,
+    "experimentalDecorators": true,
+    "lib": [
+      "dom",
+      "es2022"
+    ],
+    "moduleResolution": "bundler",
+    "module": "esnext",
+    "target": "es2022",
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "skipLibCheck": true,
+    "preserveConstEnums": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "jsx": "react",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "h.Fragment",
+    "types": [
+      "node",
+      "vitest/globals"
+    ]
+  },
+  "include": [
+    "src",
+    "src/polyfill-loader.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

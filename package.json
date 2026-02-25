@@ -37,6 +37,10 @@
 		"./loader": {
 			"import": "./dist/loader/index.js",
 			"types": "./dist/loader/index.d.ts"
+		},
+		"./polyfill": {
+			"import": "./dist/polyfill-loader.js",
+			"types": "./dist/polyfill-loader.d.ts"
 		}
 	},
 	"files": [

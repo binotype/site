@@ -1,6 +1,5 @@
-import "../../polyfill"
-
 import { Component, ComponentWillLoad, Fragment, h, Host, Prop, State, Watch } from "@stencil/core"
+import "../../polyfill"
 import { isly } from "isly"
 import { Site } from "../../Site"
 import { Page } from "../Page"
