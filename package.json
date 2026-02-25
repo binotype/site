@@ -61,7 +61,7 @@
 		"verify": "npm run lint && npm run build && npm run test"
 	},
 	"devDependencies": {
-		"@eslint/eslintrc": "^0.1.0",
+		"@eslint/eslintrc": "^3.3.4",
 		"@eslint/js": "^10.0.1",
 		"@stencil/core": "4.43.1",
 		"@stencil/sass": "3.2.3",
@@ -76,8 +76,6 @@
 		"eslint-plugin-prettier": "^5.5.5",
 		"eslint-plugin-simple-import-sort": "^12.1.1",
 		"happy-dom": "^20.7.0",
-		"isly": "^1.5.0",
-		"isoly": "^3.1.7",
 		"jsdom": "^28.1.0",
 		"prettier": "^3.8.1",
 		"sass": "1.97.3",
@@ -87,14 +85,12 @@
 		"unplugin-stencil": "^0.4.1"
 	},
 	"dependencies": {
+		"isly": "^1.7.0",
+		"isoly": "^3.1.8",
 		"tidily": "^0.2.7",
 		"tslib": "2.8.1",
 		"vite": "^7.3.1",
 		"vitest": "^4.0.18",
-		"webdriverio": "^6.3.5"
-	},
-	"peerDependencies": {
-		"isly": "^1.5.0",
-		"isoly": "^3.1.7"
+		"webdriverio": "^9.24.0"
 	}
 }

@@ -5,10 +5,8 @@ Guide for integrating `@binotype/site` components into your Stencil static site 
 ## Installation
 
 ```bash
-npm install @binotype/site isly isoly
+npm install @binotype/site
 ```
-
-> **Note**: `isly` and `isoly` are peer dependencies required for proper component functionality.
 
 ## Stencil Configuration
 
@@ -226,8 +224,6 @@ stencil build --prerender
 **Missing peer dependencies**: If you get dependency errors, ensure you've installed all peer dependencies: `npm install isly isoly`
 
 **Components not found**: Ensure you've called `defineCustomElements()` from `@binotype/site/loader` in your app root.
-
-**Dependency errors (Cannot read properties of undefined reading 'isInteger')**: Install the required peer dependencies: `npm install isly isoly`
 
 **Prerendering issues**: Make sure your Site configuration is complete and doesn't rely on browser-only APIs.
 
