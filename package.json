@@ -30,8 +30,6 @@
 	"devDependencies": {
 		"@eslint/eslintrc": "^3.3.4",
 		"@eslint/js": "^10.0.1",
-		"@stencil/core": "4.43.1",
-		"@stencil/sass": "3.2.3",
 		"@types/jest": "^29.5.14",
 		"@types/node": "25.3.0",
 		"@types/showdown": "^2.0.6",
@@ -44,13 +42,15 @@
 		"prettier": "^3.8.1",
 		"puppeteer": "^24.37.5",
 		"sass": "1.97.3",
-		"stencil-inline-svg": "1.1.0",
-		"stencil-router-v2": "^0.6.0",
 		"typescript": "5.9.3",
 		"unplugin-stencil": "^0.4.1"
 	},
 	"dependencies": {
-		"isly": "^1.7.0",
+		"@stencil/core": "4.43.2",
+		"@stencil/sass": "3.2.3",
+		"stencil-inline-svg": "1.1.0",
+		"stencil-router-v2": "^0.6.0",
+		"isly": "^1.8.0",
 		"isoly": "^3.1.8",
 		"tidily": "^0.2.7"
 	}
