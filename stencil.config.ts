@@ -20,28 +20,12 @@ export const config: Config = {
 	hydratedFlag: {
 		selector: "attribute",
 	},
+  validatePrimaryPackageOutputTarget: true,
 	outputTargets: [
 		{
-			type: "dist-custom-elements",
-			dir: "dist/components",
-			customElementsExportBehavior: "default",
-			externalRuntime: false,
-			generateTypeDeclarations: true,
-		},
-		{
+      isPrimaryPackageOutputTarget: true,
 			type: "dist",
 			dir: "dist",
-		},
-		{
-			type: "dist-hydrate-script",
-			dir: "dist/hydrate",
-		},
-		{
-			type: "docs-readme",
-		},
-		{
-			type: "docs-vscode",
-			file: "dist/docs/components-site-core-vscode.json",
 		},
 		{
 			type: "www",
