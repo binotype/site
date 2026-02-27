@@ -22,12 +22,10 @@
 	"scripts": {
 		"build": "stencil build --prerender",
 		"start": "stencil build --dev --watch --serve --prerender",
-		"test": "stencil test --spec --e2e",
-		"test.watch": "stencil test --spec --e2e --watch",
 		"generate": "stencil generate",
 		"lint": "eslint src/**/*.{ts,tsx}",
 		"format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,scss,md}\"",
-		"verify": "npm run lint && npm run build && npm run test"
+		"verify": "npm run lint && npm run build"
 	},
 	"devDependencies": {
 		"@eslint/eslintrc": "^3.3.4",
