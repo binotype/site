@@ -27,7 +27,7 @@
     "jsxFragmentFactory": "h.Fragment",
     "types": [
       "node",
-      "vitest/globals"
+      "jest"
     ]
   },
   "include": [

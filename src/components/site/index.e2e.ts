@@ -1,5 +1,4 @@
 import { newE2EPage } from "@stencil/core/testing"
-import { describe, expect, it } from "vitest"
 
 describe("binotype-site", () => {
 	it("renders", async () => {
