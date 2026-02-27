@@ -31,6 +31,12 @@ export const config: Config = {
 
 ## Component Usage
 
+### Available Components
+
+The `@binotype/site` package exports the following component:
+
+- `<binotype-site>` - The main site component that handles page layout and content
+
 ### Recommended Approach
 
 Use the loader to properly handle all dependencies:
@@ -112,126 +118,26 @@ export class AppRoot {
 				},
 				{
 					type: "content",
-					articles: this.getArticles(),
+					articles: [
+						{
+							title: "Getting started with Stencil",
+							slug: "getting-started-stencil",
+							date: "2024-01-15",
+							content: "Learn how to build components with Stencil...",
+						},
+						{
+							title: "Static Site Generation with Stencil",
+							slug: "ssg-with-stencil",
+							date: "2024-01-10",
+							content: "Explore the benefits of SSG...",
+						},
+					],
 				},
 			],
 		},
 	}
-
-	private getArticles() {
-		return [
-			{
-				title: "Getting started with Stencil",
-				slug: "getting-started-stencil",
-				date: "2024-01-15",
-				content: "Learn how to build components with Stencil...",
-			},
-			{
-				title: "Static Site Generation with Stencil",
-				slug: "ssg-with-stencil",
-				date: "2024-01-10",
-				content: "Explore the benefits of SSG...",
-			},
-		]
-	}
-
 	render() {
 		return <binotype-site site={this.siteConfig}></binotype-site>
 	}
 }
-```
-
-## TypeScript Support
-
-Full TypeScript integration is included:
-
-```tsx
-import { Component, h, Prop } from "@stencil/core"
-import { defineCustomElements } from "@binotype/site/loader"
-import type { Site, Context } from "@binotype/site"
-
-defineCustomElements()
-
-@Component({
-	tag: "blog-page",
-})
-export class BlogPage {
-	@Prop() siteData!: Site
-
-	render() {
-		return (
-			<binotype-page site={this.siteData}>
-				<main>
-					<slot></slot>
-				</main>
-			</binotype-page>
-		)
-	}
-}
-```
-
-## Styling for Static Sites
-
-### Global Theme Configuration
-
-```scss
-// src/global/app.scss
-@import "@binotype/site/dist/binotype/binotype.css";
-
-// Static site theme customization
-:root {
-	--binotype-primary-color: #007acc;
-	--binotype-font-family: "Inter", -apple-system, sans-serif;
-	--binotype-background-color: #ffffff;
-	--binotype-text-color: #333333;
-}
-
-binotype-site {
-	--site-max-width: 1200px;
-	--site-padding: 2rem;
-}
-```
-
-## Development Workflow
-
-### Static Site Generation
-
-1. Install the library and peer dependencies: `npm install @binotype/site isly isoly`
-2. Import and call `defineCustomElements()` from `@binotype/site/loader` once in your app root
-3. Configure site data and use `<binotype-site>` component
-4. Build for prerendering: `stencil build --prerender`
-
-### Local Development
-
-```bash
-# Start development server with prerendering
-stencil build --dev --watch --serve --prerender
-
-# Build for production
-stencil build --prerender
-```
-
-## Best Practices for SSG
-
-1. **Single Initialization**: Call `defineCustomElements()` once in your app root component
-2. **Complete Site Configuration**: Provide all required Site properties for proper SSG
-3. **Static Assets**: Use relative paths for images and assets
-4. **SEO Optimization**: Fill in meta fields (title, description, keywords, author)
-5. **Performance**: Use CSS custom properties for theming instead of runtime styling
-
-## Troubleshooting
-
-**Missing peer dependencies**: If you get dependency errors, ensure you've installed all peer dependencies: `npm install isly isoly`
-
-**Components not found**: Ensure you've called `defineCustomElements()` from `@binotype/site/loader` in your app root.
-
-**Prerendering issues**: Make sure your Site configuration is complete and doesn't rely on browser-only APIs.
-
-**Type errors**: Import the necessary types: `import type { Site } from "@binotype/site"`
-
-**SSG HTMLElement conflicts**: If you get `Cannot set property HTMLElement of #<MockWindow>` errors during static site generation, the polyfills are now automatically disabled during SSG. If you need the polyfills in your browser environment, optionally import them:
-
-```typescript
-// In your main application file (only if needed)
-import "@binotype/site/polyfill"
 ```
