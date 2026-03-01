@@ -1,0 +1,12 @@
+# Auto-generated files
+src/components.d.ts
+
+# Build outputs
+dist/
+www/build/
+
+# Dependencies
+node_modules/
+
+# Other auto-generated files
+*.d.ts.map
