@@ -9,19 +9,23 @@ export const config: PrerenderConfig = {
 			timeout: 20000,
 			removeScripts: false,
 			removeUnusedStyles: false,
+			// staticComponents: ["binotype-site"],
 			console: {
 				error: (msg: any) => console.error(`[${url}] Error:`, msg),
 				log: (msg: any) => console.log(`[${url}] Log:`, msg),
 				warn: (msg: any) => console.warn(`[${url}] Warning:`, msg),
 			},
+			staticDocument: true,
 		}
 	},
-	async beforeHydrate(document, url) {
-		console.log(`⏳ Starting prerender for: ${url}`)
-		return document
-	},
 	afterHydrate(document, url) {
-		console.log(`✅ Successfully prerendered: ${url}`)
+		const site = document.querySelector("binotype-site")
+		// site?.replaceWith(...site.childNodes)
+		if (site) {
+			document.body.append(...site.childNodes)
+			document.body.removeChild(site)
+		}
+		console.log(`✅ Finished prerender for: ${url}`)
 		return document
 	},
 }
