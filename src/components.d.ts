@@ -27,15 +27,20 @@ declare namespace LocalJSX {
     interface BinotypeSite {
         "site"?: Site | string;
     }
+
+    interface BinotypeSiteAttributes {
+        "site": Site | string;
+    }
+
     interface IntrinsicElements {
-        "binotype-site": BinotypeSite;
+        "binotype-site": Omit<BinotypeSite, keyof BinotypeSiteAttributes> & { [K in keyof BinotypeSite & keyof BinotypeSiteAttributes]?: BinotypeSite[K] } & { [K in keyof BinotypeSite & keyof BinotypeSiteAttributes as `attr:${K}`]?: BinotypeSiteAttributes[K] } & { [K in keyof BinotypeSite & keyof BinotypeSiteAttributes as `prop:${K}`]?: BinotypeSite[K] };
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "binotype-site": LocalJSX.BinotypeSite & JSXBase.HTMLAttributes<HTMLBinotypeSiteElement>;
+            "binotype-site": LocalJSX.IntrinsicElements["binotype-site"] & JSXBase.HTMLAttributes<HTMLBinotypeSiteElement>;
         }
     }
 }

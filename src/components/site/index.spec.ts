@@ -1,9 +1,9 @@
 import { describe, expect, it, test } from "vitest"
-import { Site } from "../../Site"
+import { binotype } from "../../index"
 import { BinotypeSite } from "./index"
 
 describe("binotype-site", () => {
-	const validSiteData: Site = {
+	const validSiteData: binotype.Site = {
 		url: "https://example.com",
 		language: "en-US",
 		title: "Test Site",
@@ -79,7 +79,7 @@ describe("binotype-site", () => {
 			expected: false,
 		},
 	])("should validate site data - $name", ({ site, expected }) => {
-		expect(Site.is(site)).toBe(expected)
+		expect(binotype.Site.is(site)).toBe(expected)
 	})
 
 	test.each([undefined, null])("should handle %s site prop", siteValue => {
