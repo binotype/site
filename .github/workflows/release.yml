@@ -3,6 +3,17 @@ name: Release
 on:
   push:
     branches: [master]
+  workflow_dispatch:
+    inputs:
+      version_type:
+        description: 'Version bump type'
+        required: true
+        default: 'minor'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
 
 permissions:
   contents: write
@@ -41,7 +52,7 @@ jobs:
           git config --local user.name "GitHub Action"
 
       - name: Bump version
-        run: npm version minor --no-git-tag-version
+        run: npm version ${{ inputs.version_type || 'minor' }} --no-git-tag-version
 
       - name: Get new version
         id: version
