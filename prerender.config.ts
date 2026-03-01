@@ -1,14 +1,14 @@
 import { PrerenderConfig } from "@stencil/core"
 
 export const config: PrerenderConfig = {
-	entryUrls: ["/", "/profile/stencil"],
+	entryUrls: ["/"],
 	crawlUrls: true,
 	hydrateOptions(url) {
 		return {
-			prettyHtml: true,
+			prettyHtml: false,
 			timeout: 20000,
-			removeScripts: false,
-			removeUnusedStyles: false,
+			removeScripts: true,
+			removeUnusedStyles: true,
 			// staticComponents: ["binotype-site"],
 			console: {
 				error: (msg: any) => console.error(`[${url}] Error:`, msg),
