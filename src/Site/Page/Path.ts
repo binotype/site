@@ -52,7 +52,7 @@ export class Path {
 					.replace(/[^a-z0-9-]+/g, "-")
 					.replace(/-+/g, "-")
 					.replace(/^-+|-+$/g, "") ?? "untitled")
-			: id.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())
+			: id.toLowerCase().replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())
 	}
 	static absolutify(path: string): string {
 		return (path.startsWith("/") || path.includes("://") ? "" : "/") + path
