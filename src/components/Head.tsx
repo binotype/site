@@ -12,6 +12,7 @@ export const Head: FunctionalComponent<Readonly<Head.Properties>> = ({ context }
 				attributes: { name: "viewport", content: "width=device-width, initial-scale=1.0, maximum-scale=1" },
 			},
 			{ tag: "title", content: context.title },
+			context.design.icon && { tag: "link", attributes: { rel: "icon", href: context.design.icon } },
 			...(context.design?.styles?.map(style =>
 				isUrl(style)
 					? { tag: "link", attributes: { rel: "stylesheet", href: style } }

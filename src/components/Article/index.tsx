@@ -1,4 +1,4 @@
-import { Fragment, FunctionalComponent, h } from "@stencil/core"
+import { FunctionalComponent, h } from "@stencil/core"
 import { Context } from "../../Context"
 import { SelfLink } from "../SelfLink"
 import { Aside } from "./Aside"
