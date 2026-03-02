@@ -10,6 +10,7 @@ import { Page } from "../Page"
 })
 export class BinotypeSite implements ComponentWillLoad {
 	@Prop() site?: Site | string
+	@Prop() debug: boolean = false
 	@State() cache?: Site | isly.Flaw
 	@Watch("site")
 	componentWillLoad() {
@@ -18,15 +19,23 @@ export class BinotypeSite implements ComponentWillLoad {
 	render() {
 		return (
 			<Host>
-				{!Site.is(this.cache) ? (
+				{Site.is(this.cache) ? (
+					[<Page site={this.cache}></Page>,
+					this.debug && (
+						<Fragment>
+							<h1>Site Configuration</h1>
+							<code>
+								<pre>{JSON.stringify(this.cache, undefined, 2)}</pre>
+							</code>
+						</Fragment>
+					)]
+				) : (
 					<Fragment>
 						<h1>Flawed Site Configuration</h1>
 						<code>
 							<pre>{JSON.stringify(Site.flawed(this.cache), undefined, 2)}</pre>
 						</code>
 					</Fragment>
-				) : (
-					<Page site={this.cache}></Page>
 				)}
 			</Host>
 		)
