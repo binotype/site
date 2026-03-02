@@ -33,7 +33,7 @@ describe("binotype.Context", () => {
 			},
 		},
 	}
-	it.each(
-		["/", "/about", "/nonexistent", "invalid-path"] as const,
-	)("create(site, %s)", path => expect(binotype.Context.create(site, path)).toMatchSnapshot())
+	it.each(["/", "/about", "/nonexistent", "invalid-path"] as const)("create(site, %s)", path =>
+		expect(binotype.Context.create(site, path)).toMatchSnapshot(),
+	)
 })

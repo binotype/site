@@ -5,9 +5,10 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                          | Default     |
-| -------- | --------- | ----------- | ----------------------------- | ----------- |
-| `site`   | `site`    |             | `Site \| string \| undefined` | `undefined` |
+| Property | Attribute | Description | Type                             | Default     |
+| -------- | --------- | ----------- | -------------------------------- | ----------- |
+| `debug`  | `debug`   |             | `"context" \| "site" \| boolean` | `false`     |
+| `site`   | `site`    |             | `Site \| string \| undefined`    | `undefined` |
 
 
 ----------------------------------------------

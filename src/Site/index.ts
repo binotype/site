@@ -2,7 +2,6 @@ import { isoly } from "isoly"
 import { isly } from "isly"
 import { Design as _Design } from "./Design"
 import { Page as _Page } from "./Page"
-import { Section as _Section } from "./Section"
 
 export interface Site {
 	url: string
@@ -18,7 +17,6 @@ export interface Site {
 export namespace Site {
 	export import Design = _Design
 	export import Page = _Page
-	export import Section = _Section
 	export const { is, flawed, type } = isly
 		.object<Site>(
 			{

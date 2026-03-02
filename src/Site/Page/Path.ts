@@ -14,7 +14,10 @@ export class Path {
 		return new Path(this.parts.slice(1))
 	}
 	readonly fragment?: string
-	private constructor(private readonly parts: string[], fragment?: string) {
+	private constructor(
+		private readonly parts: string[],
+		fragment?: string,
+	) {
 		this.fragment = fragment
 	}
 	getId(casing: "snake" | "camel" = "snake"): string {
@@ -34,7 +37,10 @@ export class Path {
 	}
 	static parse(path: string): Path {
 		const [p, fragment] = path.split("#")
-		return new Path(p.split("/").filter(part => part != ""), fragment)
+		return new Path(
+			p.split("/").filter(part => part != ""),
+			fragment,
+		)
 	}
 	static getId(id: string, casing: "snake" | "camel" = "snake"): string {
 		return casing == "snake"

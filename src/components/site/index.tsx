@@ -20,15 +20,17 @@ export class BinotypeSite implements ComponentWillLoad {
 		return (
 			<Host>
 				{Site.is(this.cache) ? (
-					[<Page site={this.cache} debug={this.debug == true || this.debug == "context"}></Page>,
-					(this.debug == true || this.debug == "site") && (
-						<Fragment>
-							<h1>Site Configuration</h1>
-							<code>
-								<pre>{JSON.stringify(this.cache, undefined, 2)}</pre>
-							</code>
-						</Fragment>
-					)]
+					[
+						<Page site={this.cache} debug={this.debug == true || this.debug == "context"}></Page>,
+						(this.debug == true || this.debug == "site") && (
+							<Fragment>
+								<h1>Site Configuration</h1>
+								<code>
+									<pre>{JSON.stringify(this.cache, undefined, 2)}</pre>
+								</code>
+							</Fragment>
+						),
+					]
 				) : (
 					<Fragment>
 						<h1>Flawed Site Configuration</h1>

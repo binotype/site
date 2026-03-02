@@ -8,12 +8,10 @@ export interface Section {
 	content?: string
 }
 export namespace Section {
-	export function load(
-		section: Site.Section & { path: Site.Page.Path },
-	): Section {
+	export function load(section: Site.Page.Section & { path: Site.Page.Path }): Section {
 		console.log("Loading section:", section.path.toString(), "with page:", section)
 		return {
-			id: section.path.head ?? "",
+			id: section.path.fragment ?? "",
 			link: section.path.toString(),
 			type: section.type,
 			title: section.title,

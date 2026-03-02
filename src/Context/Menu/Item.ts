@@ -16,12 +16,15 @@ export namespace Item {
 					url: path.toString(),
 					selected:
 						current == path.toString() ? "current" : current.startsWith(path.toString() + "/") ? "parent" : undefined,
-					items: page.pages
-						? Object.entries(page.pages)
-								.sort((left, right) => (left[1].weight ?? 0) - (right[1].weight ?? 0))
-								.map(([key, childPage]) => Item.load(childPage, path.append(key), current))
-								.filter((item): item is Item => item != undefined)
-						: [],
+					items: [
+						...Object.entries(page.pages ?? {}).map(([key, child]) => [path.append(key), child] as const),
+						...Object.entries(typeof page.content == "object" && page.content ? page.content : {}).map(
+							([key, child]) => [path.appendFragment(key), child] as const,
+						),
+					]
+						.sort((left, right) => (left[1].weight ?? 100) - (right[1].weight ?? 100))
+						.map(([path, child]) => Item.load(child, path, current))
+						.filter((item): item is Item => item != undefined),
 				}
 	}
 }
