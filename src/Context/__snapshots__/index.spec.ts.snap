@@ -3,7 +3,7 @@
 exports[`binotype.Context > create(site, /) 1`] = `
 {
   "article": {
-    "articles": [],
+    "articles": undefined,
     "content": "The requested page was not found.",
     "header": {
       "author": undefined,
@@ -16,6 +16,7 @@ exports[`binotype.Context > create(site, /) 1`] = `
     "id": "",
     "link": "/",
     "mode": "full",
+    "sections": undefined,
   },
   "base": "https://example.com",
   "description": undefined,
@@ -57,7 +58,7 @@ exports[`binotype.Context > create(site, /) 1`] = `
 exports[`binotype.Context > create(site, /about) 1`] = `
 {
   "article": {
-    "articles": [],
+    "articles": undefined,
     "content": "<p>About page content</p>",
     "header": {
       "author": undefined,
@@ -70,6 +71,7 @@ exports[`binotype.Context > create(site, /about) 1`] = `
     "id": "about",
     "link": "/about",
     "mode": "full",
+    "sections": undefined,
   },
   "base": "https://example.com",
   "description": undefined,
@@ -111,7 +113,7 @@ exports[`binotype.Context > create(site, /about) 1`] = `
 exports[`binotype.Context > create(site, /nonexistent) 1`] = `
 {
   "article": {
-    "articles": [],
+    "articles": undefined,
     "content": "The requested page was not found.",
     "header": {
       "author": undefined,
@@ -124,6 +126,7 @@ exports[`binotype.Context > create(site, /nonexistent) 1`] = `
     "id": "nonexistent",
     "link": "/nonexistent",
     "mode": "full",
+    "sections": undefined,
   },
   "base": "https://example.com",
   "description": undefined,
@@ -165,7 +168,7 @@ exports[`binotype.Context > create(site, /nonexistent) 1`] = `
 exports[`binotype.Context > create(site, invalid-path) 1`] = `
 {
   "article": {
-    "articles": [],
+    "articles": undefined,
     "content": "The requested page was not found.",
     "header": {
       "author": undefined,
@@ -178,6 +181,7 @@ exports[`binotype.Context > create(site, invalid-path) 1`] = `
     "id": "invalid-path",
     "link": "/invalid-path",
     "mode": "full",
+    "sections": undefined,
   },
   "base": "https://example.com",
   "description": undefined,

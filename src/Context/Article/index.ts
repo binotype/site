@@ -1,8 +1,8 @@
 import { isoly } from "isoly"
 import { Site } from "../../Site"
-import { Path } from "../../Site/Page/Path"
 import { Header } from "./Header"
 import { Mode as _Mode } from "./Mode"
+import { Section as _Section } from "./Section"
 
 export interface Article {
 	mode: Article.Mode
@@ -12,13 +12,14 @@ export interface Article {
 	image?: string
 	summary?: string
 	content?: string
-	// sections?: Section[]
+	sections?: Article.Section[]
 	articles?: Article[]
 }
 export namespace Article {
 	export import Mode = _Mode
+	export import Section = _Section
 	export function load(
-		page: Site.Page & { path: Path; mode: Article.Mode },
+		page: Site.Page & { path: Site.Page.Path; mode: Article.Mode },
 		design: Site.Design,
 		count?: number,
 	): Article {
@@ -28,12 +29,23 @@ export namespace Article {
 			id: page.path.head ?? "",
 			link: page.path.toString(),
 			header: Header.load(page),
+			// summary: page.content ? String(page.content).slice(0, 200) : "",
 			content:
 				typeof page.content == "string" && (page.mode == "full" || page.mode == "body") ? page.content : undefined,
-			// summary: page.content ? String(page.content).slice(0, 200) : "",
-			articles: Object.entries(
-				typeof page.content == "object" ? page.content : page.mode == "list" && page.pages ? page.pages : {},
-			)
+			sections: typeof page.content == "object" ? Object.entries(page.content)
+				.sort(
+					(left, right) => (right[1].weight ?? Number.MAX_SAFE_INTEGER) - (left[1].weight ?? Number.MAX_SAFE_INTEGER),
+				)
+				.slice(0, count ?? Number.MAX_SAFE_INTEGER)
+				.map(([id, section]: [string, Site.Section]) =>
+					Section.load(
+						{
+							...section,
+							path: page.path.appendFragment(id)
+						}
+					),
+				) : undefined,
+			articles: page.pages && Object.entries(page.pages)
 				.filter(([, page]) => !page.draft && (!page.published || page.published <= isoly.DateTime.now()))
 				.sort((left, right) => (right[1].published ?? "z").localeCompare(left[1].published ?? "z"))
 				.sort(

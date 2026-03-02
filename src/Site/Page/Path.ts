@@ -13,21 +13,28 @@ export class Path {
 	get tail(): Path {
 		return new Path(this.parts.slice(1))
 	}
-	private constructor(private readonly parts: string[]) {}
+	readonly fragment?: string
+	private constructor(private readonly parts: string[], fragment?: string) {
+		this.fragment = fragment
+	}
 	getId(casing: "snake" | "camel" = "snake"): string {
 		return Path.getId(this.head ?? "", casing)
 	}
 	append(id: string): Path {
 		return new Path([...this.parts, Path.getId(id, "snake")])
 	}
+	appendFragment(fragment: string): Path {
+		return new Path(this.parts, fragment)
+	}
 	toString(): string {
-		return `/${this.parts.join("/")}`
+		return `/${this.parts.join("/")}${this.fragment ? `#${this.fragment}` : ""}`
 	}
 	static get empty(): Path {
 		return new Path([])
 	}
 	static parse(path: string): Path {
-		return new Path(path.split("/").filter(part => part != ""))
+		const [p, fragment] = path.split("#")
+		return new Path(p.split("/").filter(part => part != ""), fragment)
 	}
 	static getId(id: string, casing: "snake" | "camel" = "snake"): string {
 		return casing == "snake"
@@ -50,8 +57,10 @@ export namespace Path {
 				leaf: isly.boolean().readonly(),
 				head: isly.string().optional().readonly(),
 				tail: isly.any().readonly(),
+				fragment: isly.string().optional().readonly(),
 				getId: isly.function(),
 				append: isly.function(),
+				appendFragment: isly.function(),
 				toString: isly.function(),
 			},
 			"binotype.Site.Page.Path",
