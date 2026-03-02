@@ -1,11 +1,11 @@
-import { FunctionalComponent } from "@stencil/core"
+import { FunctionalComponent, VNode } from "@stencil/core"
 import { isly } from "isly"
 import type { Context } from "./Context"
 
 export interface Overrides {
 	footer?: FunctionalComponent<{
 		context: Context
-	}>
+	}> | VNode | VNode[]
 }
 export namespace Overrides {
 	export const { is, flawed, type } = isly
