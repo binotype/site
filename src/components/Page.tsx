@@ -8,7 +8,7 @@ import { List } from "./List"
 import { Navigation } from "./Navigation"
 import { Single } from "./Single"
 
-export const Page: FunctionalComponent<Readonly<Page.Properties>> = ({ site }) => {
+export const Page: FunctionalComponent<Readonly<Page.Properties>> = ({ site, debug }) => {
 	console.log("Rendering Page component with site:", site)
 	const context = Context.create(site, window.location.pathname)
 	console.log("Rendering Page component with context:", context)
@@ -24,6 +24,14 @@ export const Page: FunctionalComponent<Readonly<Page.Properties>> = ({ site }) =
 				<Single article={context.article} />
 			)}
 			<Footer context={context} />
+			{debug && (
+				<Fragment>
+					<h1>Page Context</h1>
+					<code>
+						<pre>{JSON.stringify(context, undefined, 2)}</pre>
+					</code>
+				</Fragment>
+			)}
 		</Fragment>
 	)
 }
@@ -31,5 +39,6 @@ export const Page: FunctionalComponent<Readonly<Page.Properties>> = ({ site }) =
 export namespace Page {
 	export interface Properties {
 		site: Site
+		debug?: boolean
 	}
 }
