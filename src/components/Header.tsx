@@ -8,7 +8,7 @@ export const Header: FunctionalComponent<Readonly<Header.Properties>> = ({ conte
 			<a href={"/"}>
 				{context.design?.logotype ? (
 					<img
-						src={ Site.Page.Path.absolutify(context.design.logotype)}
+						src={Site.Page.Path.absolutify(context.design.logotype)}
 						alt={`${context.title}${context.tagline ? ` · ${context.tagline}` : ""}`}
 					/>
 				) : (

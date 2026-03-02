@@ -41,9 +41,7 @@ describe("binotype.Site.Page.Path", () => {
 		{ input: binotype.Site.Page.Path.parse("/home"), expected: binotype.Site.Page.Path.empty },
 		{ input: binotype.Site.Page.Path.parse("/home/user"), expected: binotype.Site.Page.Path.parse("/user") },
 		{ input: binotype.Site.Page.Path.parse("/a/b/c"), expected: binotype.Site.Page.Path.parse("/b/c") },
-	])("('$input').tail == '$expected'", ({ input, expected }) =>
-		expect(input.tail.toString()).toBe(expected.toString()),
-	)
+	])("('$input').tail == '$expected'", ({ input, expected }) => expect(input.tail.toString()).toBe(expected.toString()))
 	it.each([
 		{ input: "camelCase", casing: "snake", expected: "camel-case" },
 		{ input: "PascalCase", casing: "snake", expected: "pascal-case" },
@@ -61,7 +59,7 @@ describe("binotype.Site.Page.Path", () => {
 		{ input: "single", casing: "camel", expected: "single" },
 		{ input: "already-camelCase", casing: "camel", expected: "alreadyCamelcase" },
 	] as const)("static getId('$input', '$casing') == '$expected'", ({ input, casing, expected }) =>
-		expect(binotype.Site.Page.Path.getId(input, casing)).toBe(expected)
+		expect(binotype.Site.Page.Path.getId(input, casing)).toBe(expected),
 	)
 	it.each([
 		{ path: binotype.Site.Page.Path.parse("/camelCase"), casing: "snake", expected: "camel-case" },
@@ -69,7 +67,7 @@ describe("binotype.Site.Page.Path", () => {
 		{ path: binotype.Site.Page.Path.empty, casing: "snake", expected: "" },
 		{ path: binotype.Site.Page.Path.parse("/hello-world"), casing: "camel", expected: "helloWorld" },
 	] as const)("getId('$path', '$casing') == '$expected'", ({ path, casing, expected }) =>
-		expect(path.getId(casing)).toBe(expected)
+		expect(path.getId(casing)).toBe(expected),
 	)
 	it.each([
 		{ path: binotype.Site.Page.Path.empty, id: "home", expected: "/home" },
@@ -77,7 +75,7 @@ describe("binotype.Site.Page.Path", () => {
 		{ path: binotype.Site.Page.Path.parse("/home"), id: "CamelCase", expected: "/home/camel-case" },
 		{ path: binotype.Site.Page.Path.parse("/a/b"), id: "special chars", expected: "/a/b/special-chars" },
 	])("append('$path', '$id') == '$expected'", ({ path, id, expected }) =>
-		expect(path.append(id).toString()).toBe(expected)
+		expect(path.append(id).toString()).toBe(expected),
 	)
 	it.each([
 		{ path: binotype.Site.Page.Path.empty, fragment: "section", expected: "/#section" },
@@ -93,9 +91,7 @@ describe("binotype.Site.Page.Path", () => {
 		{ path: binotype.Site.Page.Path.parse("/home/user"), expected: "/home/user" },
 		{ path: binotype.Site.Page.Path.parse("/home#section"), expected: "/home#section" },
 		{ path: binotype.Site.Page.Path.parse("/a/b/c#fragment"), expected: "/a/b/c#fragment" },
-	])("toString('$path') == '$expected'", ({ path, expected }) =>
-		expect(path.toString()).toBe(expected)
-	)
+	])("toString('$path') == '$expected'", ({ path, expected }) => expect(path.toString()).toBe(expected))
 	it.each([
 		{ input: "/already/absolute", expected: "/already/absolute" },
 		{ input: "relative/path", expected: "/relative/path" },
@@ -106,7 +102,7 @@ describe("binotype.Site.Page.Path", () => {
 		{ input: "", expected: "/" },
 		{ input: "single", expected: "/single" },
 	])("absolutify('$input') == '$expected'", ({ input, expected }) =>
-		expect(binotype.Site.Page.Path.absolutify(input)).toBe(expected)
+		expect(binotype.Site.Page.Path.absolutify(input)).toBe(expected),
 	)
 	it.each([
 		{ input: "/absolute/path", expected: true },

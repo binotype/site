@@ -13,14 +13,19 @@ export const Head: FunctionalComponent<Readonly<Head.Properties>> = ({ context }
 				attributes: { name: "viewport", content: "width=device-width, initial-scale=1.0, maximum-scale=1" },
 			},
 			{ tag: "title", content: context.title },
-			context.design.icon && { tag: "link", attributes: { rel: "icon", href: Site.Page.Path.absolutify(context.design.icon) } },
+			context.design.icon && {
+				tag: "link",
+				attributes: { rel: "icon", href: Site.Page.Path.absolutify(context.design.icon) },
+			},
 			...(context.design?.styles?.map(style =>
 				Site.Page.Path.isUrl(style)
 					? { tag: "link", attributes: { rel: "stylesheet", href: Site.Page.Path.absolutify(style) } }
 					: { tag: "style", content: style },
 			) ?? []),
 			...(context.design?.scripts?.map(script =>
-				Site.Page.Path.isUrl(script) ? { tag: "script", attributes: { src: Site.Page.Path.absolutify(script) } } : { tag: "script", content: script },
+				Site.Page.Path.isUrl(script)
+					? { tag: "script", attributes: { src: Site.Page.Path.absolutify(script) } }
+					: { tag: "script", content: script },
 			) ?? []),
 			{ tag: "meta", attributes: { property: "og:title", content: context.title } },
 			context.description && { tag: "meta", attributes: { property: "og:description", content: context.description } },

@@ -7,8 +7,8 @@ export const config: PrerenderConfig = {
 		return {
 			prettyHtml: false,
 			timeout: 20000,
-			removeScripts: true,
-			removeUnusedStyles: true,
+			removeScripts: false,
+			removeUnusedStyles: false,
 			// staticComponents: ["binotype-site"],
 			console: {
 				error: (msg: any) => console.error(`[${url}] Error:`, msg),
