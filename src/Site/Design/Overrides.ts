@@ -11,11 +11,7 @@ export namespace Overrides {
 	export const { is, flawed, type } = isly
 		.object<Overrides>(
 			{
-				footer: isly.function<
-					FunctionalComponent<{
-						context: Context
-					}>
-				>(),
+				footer: isly.any().optional(),
 			},
 			"binotype.Site.Design.Overrides",
 		)
