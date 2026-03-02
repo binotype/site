@@ -6,7 +6,7 @@ import simpleImportSort from "eslint-plugin-simple-import-sort"
 export default [
 	js.configs.recommended,
 	{
-		ignores: ["src/components.d.ts", "www/**", "dist/**"],
+		ignores: ["src/components.d.ts", "www/**", "dist/**", "src/components/**/readme.md"],
 	},
 	{
 		files: ["**/*.{ts,tsx}"],

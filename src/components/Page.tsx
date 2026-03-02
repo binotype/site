@@ -25,12 +25,14 @@ export const Page: FunctionalComponent<Readonly<Page.Properties>> = ({ site, deb
 			)}
 			<Footer context={context} />
 			{debug && (
-				<Fragment>
-					<h1>Page Context</h1>
+				<details>
+					<summary>
+						<h1>Page Context</h1>
+					</summary>
 					<code>
 						<pre>{JSON.stringify(context, undefined, 2)}</pre>
 					</code>
-				</Fragment>
+				</details>
 			)}
 		</Fragment>
 	)
