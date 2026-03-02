@@ -10,39 +10,57 @@ import { Navigation } from "./Navigation"
 import { Single } from "./Single"
 
 export const Page: FunctionalComponent<Readonly<Page.Properties>> = ({ site, debug, overrides }) => {
-	console.log("Rendering Page component with site:", site)
-	const context = Context.create(site, window.location.pathname)
-	console.log("Rendering Page component with context:", context)
-	const navigation = <Navigation {...context.menu} />
+	const context = Site.is(site) ? Context.create(site, window.location.pathname) : undefined
+	const navigation = context && <Navigation {...context.menu} />
 	return (
 		<Fragment>
-			<Head context={context}></Head>
-			<Header context={context}>{site.design.navigation == "header" ? navigation : undefined}</Header>
-			{site.design.navigation != "header" ? navigation : undefined}
-			{Array.isArray(context.article.articles) && context.article.articles.length > 0 ? (
-				<List article={context.article} />
+			{context && site ? (
+				<Fragment>
+					<Head context={context}></Head>
+					<Header context={context}>{site.design.navigation == "header" ? navigation : undefined}</Header>
+					{site.design.navigation != "header" ? navigation : undefined}
+					{Array.isArray(context.article.articles) && context.article.articles.length > 0 ? (
+						<List article={context.article} />
+					) : (
+						<Single article={context.article} />
+					)}
+					<Footer context={context} overrides={overrides} />
+					{(debug == true || debug == "context") && (
+						<details>
+							<summary>
+								<h1>Page Context</h1>
+							</summary>
+							<code>
+								<pre>{JSON.stringify(context, undefined, 2)}</pre>
+							</code>
+						</details>
+					)}
+				</Fragment>
 			) : (
-				<Single article={context.article} />
-			)}
-			<Footer context={context} overrides={overrides} />
-			{debug && (
-				<details>
-					<summary>
-						<h1>Page Context</h1>
-					</summary>
+				<Fragment>
+					<h1>Flawed Site Configuration</h1>
 					<code>
-						<pre>{JSON.stringify(context, undefined, 2)}</pre>
+						<pre>{JSON.stringify(Site.flawed(site), undefined, 2)}</pre>
 					</code>
-				</details>
+				</Fragment>
 			)}
+			{(debug == true || debug == "site") && (
+			<details>
+				<summary>
+					<h1>Site Configuration</h1>
+				</summary>
+				<code>
+					<pre>{JSON.stringify(site, undefined, 2)}</pre>
+				</code>
+			</details>)}
 		</Fragment>
 	)
 }
 
 export namespace Page {
 	export interface Properties {
-		site: Site
-		debug?: boolean
+		site: Site | undefined
+		debug?: boolean | "site" | "context"
 		overrides?: Overrides
 	}
 }
