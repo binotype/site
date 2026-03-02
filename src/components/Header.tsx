@@ -1,5 +1,6 @@
 import { FunctionalComponent, h } from "@stencil/core"
 import { Context } from "../Context"
+import { Site } from "../Site"
 
 export const Header: FunctionalComponent<Readonly<Header.Properties>> = ({ context }, children) => (
 	<header>
@@ -7,7 +8,7 @@ export const Header: FunctionalComponent<Readonly<Header.Properties>> = ({ conte
 			<a href={"/"}>
 				{context.design?.logotype ? (
 					<img
-						src={context.design.logotype}
+						src={ Site.Page.Path.absolutify(context.design.logotype)}
 						alt={`${context.title}${context.tagline ? ` · ${context.tagline}` : ""}`}
 					/>
 				) : (

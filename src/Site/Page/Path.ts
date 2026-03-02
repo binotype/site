@@ -54,6 +54,12 @@ export class Path {
 					.replace(/^-+|-+$/g, "") ?? "untitled")
 			: id.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())
 	}
+	static absolutify(path: string): string {
+		return (path.startsWith("/") || path.includes("://") ? "" : "/") + path
+	}
+	static isUrl(path: string): boolean {
+		return /^(?:\.\.?\/|\/|(?:https?:)?\/\/)/i.test(path)
+	}
 }
 export namespace Path {
 	export const { is, flawed, type } = isly
