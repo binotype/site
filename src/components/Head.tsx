@@ -27,11 +27,23 @@ export const Head: FunctionalComponent<Readonly<Head.Properties>> = ({ context }
 					? { tag: "script", attributes: { src: Site.Page.Path.absolutify(script) } }
 					: { tag: "script", content: script },
 			) ?? []),
-			{ tag: "meta", attributes: { property: "og:title", content: context.title } },
+
+			{ tag: "meta", attributes: { property: "og:title", content: context.article.header?.title ?? context.title } },
 			context.description && { tag: "meta", attributes: { property: "og:description", content: context.description } },
 			context.image && { tag: "meta", attributes: { property: "og:image", content: context.image } },
-			{ tag: "meta", attributes: { property: "og:type", content: "website" } },
 			context.url && { tag: "meta", attributes: { property: "og:url", content: context.url } },
+			{ tag: "meta", attributes: { property: "og:type", content: context.article.articles ? "website" : "article" } },
+			{ tag: "meta", attributes: { property: "og:site_name", content: context.title } },
+			context.article.articles &&
+				context.article.header?.published && {
+					tag: "meta",
+					attributes: { property: "article:published_time", content: context.article.header?.published },
+				},
+			context.article.articles &&
+				context.article.header?.author && {
+					tag: "meta",
+					attributes: { property: "article:author", content: context.article.header?.author },
+				},
 		] as (Element | undefined)[]
 	)
 		.filter((element: Element | undefined): element is Element => element != undefined)
@@ -67,9 +79,26 @@ function createElement(element: Element): HTMLElement {
 			{scripts?.map((script, i) =>
 				isUrl(script) ? <script src={script} key={i} /> : <script key={i}>{script}</script>
 			)}
+			<!-- Basic Open Graph -->
+			<meta property="og:title" content="Specific Page Title">
+			<meta property="og:description" content="Page description (155-300 chars)">
+			<meta property="og:image" content="https://simonmika.com/assets/share-image.jpg">
+			<meta property="og:url" content="https://simonmika.com/current-page">
+			<meta property="og:type" content="website"> <!-- or "article" for blog posts -->
+			<meta property="og:site_name" content="Simon Says">
+
+			<!-- Image specifications -->
+			<meta property="og:image:width" content="1200">
+			<meta property="og:image:height" content="630">
+			<meta property="og:image:alt" content="Alt text for the image">
 			<meta property="og:title" content={title} />
 			{description && <meta property="og:description" content={description} />}
 			{image && <meta property="og:image" content={image} />}
 			<meta property="og:type" content="website" />
 			<meta property="og:url" content={url} />
+
+			<!-- Article-specific Open Graph -->
+			<meta property="og:type" content="article">
+			<meta property="article:published_time" content="2017-08-23">
+			<meta property="article:author" content="Simon Mika">
 */
