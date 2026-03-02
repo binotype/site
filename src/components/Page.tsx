@@ -1,5 +1,6 @@
 import { Fragment, FunctionalComponent, h } from "@stencil/core"
 import { Context } from "../Context"
+import { Overrides } from "../Overrides"
 import { Site } from "../Site"
 import { Footer } from "./Footer"
 import { Head } from "./Head"
@@ -8,7 +9,7 @@ import { List } from "./List"
 import { Navigation } from "./Navigation"
 import { Single } from "./Single"
 
-export const Page: FunctionalComponent<Readonly<Page.Properties>> = ({ site, debug }) => {
+export const Page: FunctionalComponent<Readonly<Page.Properties>> = ({ site, debug, overrides }) => {
 	console.log("Rendering Page component with site:", site)
 	const context = Context.create(site, window.location.pathname)
 	console.log("Rendering Page component with context:", context)
@@ -23,7 +24,7 @@ export const Page: FunctionalComponent<Readonly<Page.Properties>> = ({ site, deb
 			) : (
 				<Single article={context.article} />
 			)}
-			<Footer context={context} />
+			<Footer context={context} overrides={overrides} />
 			{debug && (
 				<details>
 					<summary>
@@ -42,5 +43,6 @@ export namespace Page {
 	export interface Properties {
 		site: Site
 		debug?: boolean
+		overrides?: Overrides
 	}
 }

@@ -5,10 +5,11 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                             | Default     |
-| -------- | --------- | ----------- | -------------------------------- | ----------- |
-| `debug`  | `debug`   |             | `"context" \| "site" \| boolean` | `false`     |
-| `site`   | `site`    |             | `Site \| string \| undefined`    | `undefined` |
+| Property    | Attribute | Description | Type                             | Default     |
+| ----------- | --------- | ----------- | -------------------------------- | ----------- |
+| `debug`     | `debug`   |             | `"context" \| "site" \| boolean` | `false`     |
+| `overrides` | --        |             | `Overrides \| undefined`         | `undefined` |
+| `site`      | `site`    |             | `Site \| string \| undefined`    | `undefined` |
 
 
 ----------------------------------------------

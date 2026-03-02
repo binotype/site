@@ -6,13 +6,16 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Site } from "./Site";
+import { Overrides } from "./Overrides";
 export { Site } from "./Site";
+export { Overrides } from "./Overrides";
 export namespace Components {
     interface BinotypeSite {
         /**
           * @default false
          */
         "debug": boolean | "site" | "context";
+        "overrides"?: Overrides;
         "site"?: Site | string;
     }
 }
@@ -33,6 +36,7 @@ declare namespace LocalJSX {
           * @default false
          */
         "debug"?: boolean | "site" | "context";
+        "overrides"?: Overrides;
         "site"?: Site | string;
     }
 

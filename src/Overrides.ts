@@ -1,6 +1,6 @@
 import { FunctionalComponent } from "@stencil/core"
 import { isly } from "isly"
-import type { Context } from "../../Context"
+import type { Context } from "./Context"
 
 export interface Overrides {
 	footer?: FunctionalComponent<{

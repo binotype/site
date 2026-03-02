@@ -1,5 +1,4 @@
 import { isly } from "isly"
-import { Overrides as _Overrides } from "./Overrides"
 
 export interface Design {
 	logotype?: string
@@ -14,10 +13,8 @@ export interface Design {
 	list?: {
 		mode: "body" | "full" | "header" | "list" | "summary"
 	}
-	overrides?: Design.Overrides
 }
 export namespace Design {
-	export import Overrides = _Overrides
 	export const { is, flawed, type } = isly
 		.object<Design>(
 			{
@@ -37,7 +34,6 @@ export namespace Design {
 						mode: isly.string("value", "body", "full", "header", "list", "summary"),
 					})
 					.optional(),
-				overrides: Overrides.type.optional(),
 			},
 			"binotype.Site.Design",
 		)
