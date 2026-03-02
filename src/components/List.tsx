@@ -4,7 +4,7 @@ import { Article } from "./Article"
 
 export const List: FunctionalComponent<Readonly<List.Properties>> = ({ article }) => (
 	<main class="list">
-		{article.sections?.map(section => (
+		{article.articles?.map(section => (
 			<Article {...section} />
 		))}
 	</main>

@@ -12,7 +12,8 @@ export interface Article {
 	image?: string
 	summary?: string
 	content?: string
-	sections?: Article[]
+	// sections?: Section[]
+	articles?: Article[]
 }
 export namespace Article {
 	export import Mode = _Mode
@@ -30,7 +31,7 @@ export namespace Article {
 			content:
 				typeof page.content == "string" && (page.mode == "full" || page.mode == "body") ? page.content : undefined,
 			// summary: page.content ? String(page.content).slice(0, 200) : "",
-			sections: Object.entries(
+			articles: Object.entries(
 				typeof page.content == "object" ? page.content : page.mode == "list" && page.pages ? page.pages : {},
 			)
 				.filter(([, page]) => !page.draft && (!page.published || page.published <= isoly.DateTime.now()))

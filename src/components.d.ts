@@ -9,6 +9,10 @@ import { Site } from "./Site";
 export { Site } from "./Site";
 export namespace Components {
     interface BinotypeSite {
+        /**
+          * @default false
+         */
+        "debug": boolean | "site" | "context";
         "site"?: Site | string;
     }
 }
@@ -25,11 +29,16 @@ declare global {
 }
 declare namespace LocalJSX {
     interface BinotypeSite {
+        /**
+          * @default false
+         */
+        "debug"?: boolean | "site" | "context";
         "site"?: Site | string;
     }
 
     interface BinotypeSiteAttributes {
         "site": Site | string;
+        "debug": string;
     }
 
     interface IntrinsicElements {

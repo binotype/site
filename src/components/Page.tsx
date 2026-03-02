@@ -18,7 +18,7 @@ export const Page: FunctionalComponent<Readonly<Page.Properties>> = ({ site, deb
 			<Head context={context}></Head>
 			<Header context={context}>{site.design.navigation == "header" ? navigation : undefined}</Header>
 			{site.design.navigation != "header" ? navigation : undefined}
-			{Array.isArray(context.article.sections) ? (
+			{Array.isArray(context.article.articles) && context.article.articles.length > 0 ? (
 				<List article={context.article} />
 			) : (
 				<Single article={context.article} />

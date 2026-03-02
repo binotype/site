@@ -65,6 +65,19 @@ export class Context {
 			)
 		)
 	}
+	toJSON() {
+		return {
+			title: this.title,
+			tagline: this.tagline,
+			image: this.image,
+			description: this.description,
+			base: this.base,
+			url: this.url,
+			design: this.design,
+			menu: this.menu,
+			article: this.article,
+		}
+	}
 	static create(site: Site, path: Site.Page.Path | string): Context {
 		return new Context(site, path)
 	}

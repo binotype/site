@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest"
-import { Site } from "./index"
+import { binotype } from "../index"
 
 describe("binotype.Site", () => {
 	it.each([
@@ -42,5 +42,5 @@ describe("binotype.Site", () => {
 			design: {},
 			page: { pages: {} },
 		},
-	])("is(%s)", value => expect(Site.is(value)).toBe(true))
+	])("is(%s)", value => expect(binotype.Site.is(value)).toBe(true))
 })
