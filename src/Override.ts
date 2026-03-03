@@ -31,8 +31,11 @@ export namespace Override {
 	export const { is, flawed, type } = isly
 		.any("((props: T, components: Override.Components) => VNode) | VNode | VNode[]")
 		.bind()
-	export const components: Override.Components = {} as Override.Components
+	let useImplementation: ((override: Override<any>, properties: any) => VNode | VNode[]) | undefined = undefined
+	export function registerUse<T>(implementation: (override: Override<T>, properties: T) => VNode | VNode[]) {
+		useImplementation = implementation
+	}
 	export function use<T>(override: Override<T>, properties: T): VNode | VNode[] {
-		return typeof override == "function" ? override(properties, Override.components!) : override
+		return useImplementation ? useImplementation(override, properties) : []
 	}
 }

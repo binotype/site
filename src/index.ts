@@ -48,14 +48,21 @@ export import Override = _Override
 export import Overrides = _Overrides
 export import Site = _Site
 
-Override.components.Article = Article
-Override.components.Footer = Footer
-Override.components.Head = Head
-Override.components.Header = Header
-Override.components.Link = Link
-Override.components.List = List
-Override.components.Menu = Menu
-Override.components.Navigation = Navigation
-Override.components.Page = Page
-Override.components.SelfLink = SelfLink
-Override.components.Single = Single
+Override.registerUse(<T>(override: Override<T>, properties: T) => {
+	console.log("Using override", override, "with properties", properties)
+	return typeof override == "function"
+		? override(properties, {
+				Article,
+				Footer,
+				Head,
+				Header,
+				Link,
+				List,
+				Menu,
+				Navigation,
+				Page,
+				SelfLink,
+				Single,
+			})
+		: override
+})
