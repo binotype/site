@@ -25,7 +25,6 @@ export class BinotypeSite implements ComponentWillLoad {
 						<Page
 							site={this.cache}
 							debug={this.debug == true || this.debug == "context"}
-							overrides={this.overrides}
 						></Page>,
 						(this.debug == true || this.debug == "site") && (
 							<details>

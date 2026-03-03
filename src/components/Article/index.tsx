@@ -8,19 +8,14 @@ import { Header } from "./Header"
 import { Section } from "./Section"
 import { Summary } from "./Summary"
 
-export const Article: FunctionalComponent<Article.Properties> = ({
-	id,
-	mode,
-	header,
-	summary,
-	link,
-	truncated,
-	aside,
-	content,
-	sections,
-	articles,
-	footer,
-}) =>
+export const Article: FunctionalComponent<Article.Properties> & {
+	Header: typeof Header
+	Aside: typeof Aside
+	Content: typeof Content
+	Section: typeof Section
+	Summary: typeof Summary
+	Footer: typeof Footer
+} = ({ id, mode, header, summary, link, truncated, aside, content, sections, articles, footer }) =>
 	mode == "list" ? (
 		articles && articles.map(article => <Article {...article} />)
 	) : (
@@ -35,7 +30,12 @@ export const Article: FunctionalComponent<Article.Properties> = ({
 			{["header", "summary"].includes(mode) && link && <SelfLink link={link} truncated={truncated}></SelfLink>}
 		</article>
 	)
-
+Article.Header = Header
+Article.Aside = Aside
+Article.Content = Content
+Article.Section = Section
+Article.Summary = Summary
+Article.Footer = Footer
 export namespace Article {
 	export interface Properties extends Partial<Summary.Properties>, SelfLink.Properties {
 		id: string
