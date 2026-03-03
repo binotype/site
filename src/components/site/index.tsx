@@ -22,7 +22,11 @@ export class BinotypeSite implements ComponentWillLoad {
 			<Host>
 				{Site.is(this.cache) ? (
 					[
-						<Page site={this.cache} debug={this.debug == true || this.debug == "context"} overrides={this.overrides}></Page>,
+						<Page
+							site={this.cache}
+							debug={this.debug == true || this.debug == "context"}
+							overrides={this.overrides}
+						></Page>,
 						(this.debug == true || this.debug == "site") && (
 							<details>
 								<summary>

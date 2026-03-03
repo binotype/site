@@ -22,7 +22,7 @@ export const Page: FunctionalComponent<Readonly<Page.Properties>> = ({ site, deb
 			) : (
 				<Single article={context.article} />
 			)}
-			<Footer context={context} overrides={overrides}/>
+			<Footer context={context} overrides={overrides} />
 			{debug && (
 				<Fragment>
 					<h1>Page Context</h1>

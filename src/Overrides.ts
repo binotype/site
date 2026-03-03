@@ -1,17 +1,15 @@
-import { FunctionalComponent, VNode } from "@stencil/core"
 import { isly } from "isly"
 import type { Context } from "./Context"
+import { Override } from "./Override"
 
 export interface Overrides {
-	footer?: FunctionalComponent<{
-		context: Context
-	}> | VNode | VNode[]
+	footer?: Override<{ context: Context }>
 }
 export namespace Overrides {
 	export const { is, flawed, type } = isly
 		.object<Overrides>(
 			{
-				footer: isly.any().optional(),
+				footer: Override.type.optional(),
 			},
 			"binotype.Site.Design.Overrides",
 		)
