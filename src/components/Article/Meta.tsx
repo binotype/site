@@ -1,15 +1,11 @@
-import { FunctionalComponent, h } from "@stencil/core"
+import { FunctionalComponent, h, VNode } from "@stencil/core"
 import { isoly } from "isoly"
 import { tidily } from "tidily"
 
-export const Meta: FunctionalComponent<Meta.Properties> = ({
-	published,
-	changed,
-	wordCount,
-	readingTime,
-	author,
-	publication,
-}) => (
+export const Meta: FunctionalComponent<Meta.Properties> & {
+	override: (properties: Meta.Properties) => VNode | VNode[] | null
+} = properties => Meta.override(properties)
+Meta.override = ({ published, changed, wordCount, readingTime, author, publication }) => (
 	<p>
 		{published && (
 			<time class="article-published">{tidily.format(isoly.Date.normalize(published), "date", "se-SE")}</time>

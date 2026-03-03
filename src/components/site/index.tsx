@@ -1,6 +1,5 @@
 import { Component, ComponentWillLoad, Fragment, h, Host, Prop, State, Watch } from "@stencil/core"
 import "../../polyfill"
-import { Overrides } from "../../Overrides"
 import { Site } from "../../Site"
 import { Page } from "../Page"
 
@@ -11,7 +10,6 @@ import { Page } from "../Page"
 export class BinotypeSite implements ComponentWillLoad {
 	@Prop() site?: Site | string
 	@Prop() debug: boolean | "site" | "context" = false
-	@Prop() overrides?: Overrides
 	@State() cache?: Site
 	@Watch("site")
 	componentWillLoad() {
@@ -22,10 +20,7 @@ export class BinotypeSite implements ComponentWillLoad {
 			<Host>
 				{Site.is(this.cache) ? (
 					[
-						<Page
-							site={this.cache}
-							debug={this.debug == true || this.debug == "context"}
-						></Page>,
+						<Page site={this.cache} debug={this.debug == true || this.debug == "context"}></Page>,
 						(this.debug == true || this.debug == "site") && (
 							<details>
 								<summary>

@@ -1,6 +1,9 @@
-import { FunctionalComponent, h } from "@stencil/core"
+import { FunctionalComponent, h, VNode } from "@stencil/core"
 
-export const Menu: FunctionalComponent<Readonly<Menu.Properties>> = ({ items, depth }) => (
+export const Menu: FunctionalComponent<Readonly<Menu.Properties>> & {
+	override: (properties: Menu.Properties) => VNode | VNode[] | null
+} = properties => Menu.override(properties)
+Menu.override = ({ items, depth }) => (
 	<ul>
 		{items.map(item => (
 			<li class={item.selected == "current" ? "current" : item.selected == "parent" ? "current-parent" : ""}>
@@ -10,7 +13,6 @@ export const Menu: FunctionalComponent<Readonly<Menu.Properties>> = ({ items, de
 		))}
 	</ul>
 )
-
 export namespace Menu {
 	export interface Properties {
 		items: {

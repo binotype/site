@@ -11,8 +11,6 @@ import { Page as _Page } from "./components/Page"
 import { SelfLink as _SelfLink } from "./components/SelfLink"
 import { Single as _Single } from "./components/Single"
 import { Context as _Context } from "./Context"
-import { Override as _Override } from "./Override"
-import { Overrides as _Overrides } from "./Overrides"
 import { Site as _Site } from "./Site"
 
 export namespace binotype {
@@ -28,8 +26,6 @@ export namespace binotype {
 	export import SelfLink = _SelfLink
 	export import Single = _Single
 	export import Context = _Context
-	export import Override = _Override
-	export import Overrides = _Overrides
 	export import Site = _Site
 }
 export import Article = _Article
@@ -44,25 +40,4 @@ export import Page = _Page
 export import SelfLink = _SelfLink
 export import Single = _Single
 export import Context = _Context
-export import Override = _Override
-export import Overrides = _Overrides
 export import Site = _Site
-
-Override.registerUse(<T>(override: Override<T>, properties: T) => {
-	console.log("Using override", override, "with properties", properties)
-	return typeof override == "function"
-		? override(properties, {
-				Article,
-				Footer,
-				Head,
-				Header,
-				Link,
-				List,
-				Menu,
-				Navigation,
-				Page,
-				SelfLink,
-				Single,
-			})
-		: override
-})

@@ -1,8 +1,11 @@
-import { FunctionalComponent, h } from "@stencil/core"
+import { FunctionalComponent, h, VNode } from "@stencil/core"
 import { Context } from "../Context"
 import { Menu } from "./Menu"
 
-export const Navigation: FunctionalComponent<Readonly<Navigation.Properties>> = ({ items, depth }) => (
+export const Navigation: FunctionalComponent<Readonly<Navigation.Properties>> & {
+	override: (properties: Navigation.Properties) => VNode | VNode[] | null
+} = properties => Navigation.override(properties)
+Navigation.override = ({ items, depth }) => (
 	<nav>
 		<Menu items={items} depth={depth} />
 	</nav>

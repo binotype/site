@@ -1,6 +1,9 @@
-import { FunctionalComponent, h } from "@stencil/core"
+import { FunctionalComponent, h, VNode } from "@stencil/core"
 
-export const SelfLink: FunctionalComponent<Readonly<SelfLink.Properties>> = ({ link, truncated }) =>
+export const SelfLink: FunctionalComponent<SelfLink.Properties> & {
+	override: (properties: SelfLink.Properties) => VNode | VNode[] | null
+} = properties => SelfLink.override(properties)
+SelfLink.override = ({ link, truncated }: SelfLink.Properties): VNode | VNode[] | null =>
 	link && (
 		<div class={`self-link${truncated ? " truncated" : ""}`}>
 			<a href={link}>

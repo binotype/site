@@ -1,7 +1,10 @@
-import { FunctionalComponent, h } from "@stencil/core"
+import { FunctionalComponent, h, VNode } from "@stencil/core"
 import { Meta } from "./Meta"
 
-export const Header: FunctionalComponent<Header.Properties> = ({ title, ...meta }) => (
+export const Header: FunctionalComponent<Header.Properties> & {
+	override: (properties: Header.Properties) => VNode | VNode[] | null
+} = properties => Header.override(properties)
+Header.override = ({ title, ...meta }: Header.Properties): VNode | VNode[] | null => (
 	<header>
 		<h1>{title}</h1>
 		<Meta {...meta} />
