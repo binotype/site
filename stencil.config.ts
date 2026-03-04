@@ -27,6 +27,7 @@ export const config: Config = {
 			customElementsExportBehavior: "default",
 			externalRuntime: false,
 			generateTypeDeclarations: true,
+			includeGlobalScripts: false,
 		},
 		{
 			type: "dist",
