@@ -1,13 +1,13 @@
-import { FunctionalComponent, h, VNode } from "@stencil/core"
+import { FunctionalComponent, FunctionalUtilities, h, VNode } from "@stencil/core"
 
 export const Link: FunctionalComponent<Readonly<Link.Properties>> & {
-	override: (properties: Link.Properties) => VNode | VNode[] | null
-} = properties => Link.override(properties)
-Link.override = ({ link }: Link.Properties): VNode | VNode[] | null =>
+	override: FunctionalComponent<Link.Properties>
+} = (properties, children, utils) => Link.override(properties, children, utils)
+Link.override = ({ link }: Link.Properties, children: VNode[], utils: FunctionalUtilities): VNode | VNode[] | null =>
 	link && (
 		<div class="link">
 			<a href={link}>
-				<span></span>
+				<span>{children}</span>
 			</a>
 		</div>
 	)

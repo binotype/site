@@ -1,4 +1,4 @@
-import { Fragment, FunctionalComponent, h, VNode } from "@stencil/core"
+import { Fragment, FunctionalComponent, FunctionalUtilities, h, VNode } from "@stencil/core"
 import { Context } from "../Context"
 import { Site } from "../Site"
 import { Footer } from "./Footer"
@@ -9,9 +9,13 @@ import { Navigation } from "./Navigation"
 import { Single } from "./Single"
 
 export const Page: FunctionalComponent<Readonly<Page.Properties>> & {
-	override: (properties: Page.Properties) => VNode | VNode[] | null
-} = properties => Page.override(properties)
-Page.override = ({ site, debug }) => {
+	override: FunctionalComponent<Page.Properties>
+} = (properties, children, utils) => Page.override(properties, children, utils)
+Page.override = (
+	{ site, debug }: Page.Properties,
+	children: VNode[],
+	utils: FunctionalUtilities,
+): VNode | VNode[] | null => {
 	const context = Context.create(site, window.location.pathname)
 	const navigation = <Navigation {...context.menu} />
 	return (
@@ -24,6 +28,7 @@ Page.override = ({ site, debug }) => {
 			) : (
 				<Single article={context.article} />
 			)}
+			{children}
 			<Footer context={context} />
 			{debug && (
 				<Fragment>

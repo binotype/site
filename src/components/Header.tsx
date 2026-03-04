@@ -1,11 +1,15 @@
-import { FunctionalComponent, h, VNode } from "@stencil/core"
+import { FunctionalComponent, FunctionalUtilities, h, VNode } from "@stencil/core"
 import { Context } from "../Context"
 import { Site } from "../Site"
 
 export const Header: FunctionalComponent<Readonly<Header.Properties>> & {
-	override: (properties: Header.Properties) => VNode | VNode[] | null
-} = properties => Header.override(properties)
-Header.override = ({ context }: Header.Properties, children?: VNode | VNode[] | null): VNode | VNode[] | null => (
+	override: FunctionalComponent<Header.Properties>
+} = (properties, children, utils) => Header.override(properties, children, utils)
+Header.override = (
+	{ context }: Header.Properties,
+	children?: VNode | VNode[] | null,
+	utils?: FunctionalUtilities,
+): VNode | VNode[] | null => (
 	<header>
 		<h1>
 			<a href={"/"}>

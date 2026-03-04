@@ -1,10 +1,15 @@
-import { FunctionalComponent, h, VNode } from "@stencil/core"
+import { FunctionalComponent, FunctionalUtilities, h, VNode } from "@stencil/core"
 
 export const Footer: FunctionalComponent<Footer.Properties> & {
-	override: (properties: Footer.Properties) => VNode | VNode[] | null
-} = properties => Footer.override(properties)
-Footer.override = ({ copyright, license }: Footer.Properties): VNode | VNode[] | null => (
+	override: FunctionalComponent<Footer.Properties>
+} = (properties, children, utils) => Footer.override(properties, children, utils)
+Footer.override = (
+	{ copyright, license }: Footer.Properties,
+	children: VNode[],
+	utils: FunctionalUtilities,
+): VNode | VNode[] | null => (
 	<footer>
+		{children}
 		<p>
 			{copyright && <span id="footer-copyright">{copyright}</span>}
 			{license && <span id="footer-license">{license}</span>}

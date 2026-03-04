@@ -1,10 +1,14 @@
-import { FunctionalComponent, h, VNode } from "@stencil/core"
+import { FunctionalComponent, FunctionalUtilities, h, VNode } from "@stencil/core"
 import { Meta } from "./Meta"
 
 export const Header: FunctionalComponent<Header.Properties> & {
-	override: (properties: Header.Properties) => VNode | VNode[] | null
-} = properties => Header.override(properties)
-Header.override = ({ title, ...meta }: Header.Properties): VNode | VNode[] | null => (
+	override: FunctionalComponent<Header.Properties>
+} = (properties, children, utils) => Header.override(properties, children, utils)
+Header.override = (
+	{ title, ...meta }: Header.Properties,
+	children: VNode[],
+	utils: FunctionalUtilities,
+): VNode | VNode[] | null => (
 	<header>
 		<h1>{title}</h1>
 		<Meta {...meta} />
@@ -13,6 +17,7 @@ Header.override = ({ title, ...meta }: Header.Properties): VNode | VNode[] | nul
 				<path d="M464 256c0-114.875-93.125-208-208-208S48 141.125 48 256s93.125 208 208 208 208-93.125 208-208zm-112 32H160l96-96 96 96z" />
 			</svg>
 		</a>
+		{children}
 	</header>
 )
 export namespace Header {

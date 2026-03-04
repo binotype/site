@@ -1,10 +1,17 @@
-import { FunctionalComponent, h, VNode } from "@stencil/core"
+import { FunctionalComponent, FunctionalUtilities, h, VNode } from "@stencil/core"
 
 export const Aside: FunctionalComponent<Aside.Properties> & {
-	override: (properties: Aside.Properties) => VNode | VNode[] | null
-} = properties => Aside.override(properties)
-Aside.override = ({ title, summary, image }: Aside.Properties): VNode | VNode[] | null => (
-	<aside>{image && <img src={image} title={title} alt={summary} />}</aside>
+	override: FunctionalComponent<Aside.Properties>
+} = (properties, children, utils) => Aside.override(properties, children, utils)
+Aside.override = (
+	{ title, summary, image }: Aside.Properties,
+	children: VNode[],
+	utils: FunctionalUtilities,
+): VNode | VNode[] | null => (
+	<aside>
+		{image && <img src={image} title={title} alt={summary} />}
+		{children}
+	</aside>
 )
 export namespace Aside {
 	export interface Properties {

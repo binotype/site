@@ -1,11 +1,16 @@
-import { FunctionalComponent, h, VNode } from "@stencil/core"
+import { FunctionalComponent, FunctionalUtilities, h, VNode } from "@stencil/core"
 
 export const Summary: FunctionalComponent<Summary.Properties> & {
-	override: (properties: Summary.Properties) => VNode | VNode[] | null
-} = properties => Summary.override(properties)
-Summary.override = ({ summary }: Summary.Properties): VNode | VNode[] | null => (
+	override: FunctionalComponent<Summary.Properties>
+} = (properties, children, utils) => Summary.override(properties, children, utils)
+Summary.override = (
+	{ summary }: Summary.Properties,
+	children: VNode[],
+	utils: FunctionalUtilities,
+): VNode | VNode[] | null => (
 	<main class="summary">
 		<p>{summary}</p>
+		{children}
 	</main>
 )
 export namespace Summary {

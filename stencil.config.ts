@@ -37,9 +37,6 @@ export const config: Config = {
 			dir: "dist/hydrate",
 		},
 		{
-			type: "docs-readme",
-		},
-		{
 			type: "docs-vscode",
 			file: "dist/docs/components-site-core-vscode.json",
 		},
