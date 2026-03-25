@@ -10,8 +10,6 @@ export { Navigation } from "./components/Navigation"
 export { Page } from "./components/Page"
 export { SelfLink } from "./components/SelfLink"
 export { Single } from "./components/Single"
-export { Context } from "./Context"
-export { Site } from "./Site"
 
 import * as _binotype from "./binotype"
 export import binotype = _binotype

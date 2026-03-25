@@ -6,7 +6,7 @@ export const Content: FunctionalComponent<Content.Properties> & {
 Content.override = (
 	{ content }: Content.Properties,
 	children: VNode[],
-	utils: FunctionalUtilities,
+	_utils: FunctionalUtilities,
 ): VNode | VNode[] | null => <main {...(content ? { innerHTML: content } : {})}>{children}</main>
 export namespace Content {
 	export interface Properties {

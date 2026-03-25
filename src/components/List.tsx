@@ -1,5 +1,5 @@
 import { FunctionalComponent, FunctionalUtilities, h, VNode } from "@stencil/core"
-import { Context } from "../Context"
+import { binotype } from "@binotype/model"
 import { Article } from "./Article"
 
 export const List: FunctionalComponent<Readonly<List.Properties>> & {
@@ -18,6 +18,6 @@ List.override = (
 )
 export namespace List {
 	export interface Properties {
-		article: Context.Article
+		article: binotype.Context.Article
 	}
 }

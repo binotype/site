@@ -6,7 +6,7 @@ export const Footer: FunctionalComponent<Footer.Properties> & {
 Footer.override = (
 	{ copyright, license }: Footer.Properties,
 	children: VNode[],
-	utils: FunctionalUtilities,
+	_utils: FunctionalUtilities,
 ): VNode | VNode[] | null => (
 	<footer>
 		{children}

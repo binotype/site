@@ -5,15 +5,15 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Site } from "./Site";
-export { Site } from "./Site";
+import { binotype } from "@binotype/model";
+export { binotype } from "@binotype/model";
 export namespace Components {
     interface BinotypeSite {
         /**
           * @default false
          */
         "debug": boolean | "site" | "context";
-        "site"?: Site | string;
+        "site"?: binotype.Site | string;
     }
 }
 declare global {
@@ -33,11 +33,11 @@ declare namespace LocalJSX {
           * @default false
          */
         "debug"?: boolean | "site" | "context";
-        "site"?: Site | string;
+        "site"?: binotype.Site | string;
     }
 
     interface BinotypeSiteAttributes {
-        "site": Site | string;
+        "site": binotype.Site | string;
         "debug": string;
     }
 

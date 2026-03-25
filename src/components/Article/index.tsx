@@ -1,5 +1,5 @@
 import { FunctionalComponent, FunctionalUtilities, h, VNode } from "@stencil/core"
-import { Context } from "../../Context"
+import { binotype } from "@binotype/model"
 import { SelfLink } from "../SelfLink"
 import { Aside } from "./Aside"
 import { Content } from "./Content"
@@ -34,11 +34,11 @@ Article.override = (
 export namespace Article {
 	export interface Properties extends Partial<Summary.Properties>, SelfLink.Properties {
 		id: string
-		mode: Context.Article.Mode
+		mode: binotype.Context.Article.Mode
 		header?: Header.Properties
 		aside?: Aside.Properties
 		content?: string
-		sections?: Context.Article.Section[]
+		sections?: binotype.Context.Article.Section[]
 		articles?: Properties[]
 		footer?: Footer.Properties
 	}

@@ -1,6 +1,5 @@
 import { Fragment, FunctionalComponent, h } from "@stencil/core"
-import { Context } from "../Context"
-import { Site } from "../Site"
+import { binotype } from "@binotype/model"
 
 export const Head: FunctionalComponent<Readonly<Head.Properties>> = ({ context }) => {
 	const result: HTMLElement[] = (
@@ -15,16 +14,16 @@ export const Head: FunctionalComponent<Readonly<Head.Properties>> = ({ context }
 			{ tag: "title", content: context.title },
 			context.design.icon && {
 				tag: "link",
-				attributes: { rel: "icon", href: Site.Page.Path.absolutify(context.design.icon) },
+				attributes: { rel: "icon", href: binotype.Site.Page.Path.absolutify(context.design.icon) },
 			},
 			...(context.design?.styles?.map(style =>
-				Site.Page.Path.isUrl(style)
-					? { tag: "link", attributes: { rel: "stylesheet", href: Site.Page.Path.absolutify(style) } }
+				binotype.Site.Page.Path.isUrl(style)
+					? { tag: "link", attributes: { rel: "stylesheet", href: binotype.Site.Page.Path.absolutify(style) } }
 					: { tag: "style", content: style },
 			) ?? []),
 			...(context.design?.scripts?.map(script =>
-				Site.Page.Path.isUrl(script)
-					? { tag: "script", attributes: { src: Site.Page.Path.absolutify(script) } }
+				binotype.Site.Page.Path.isUrl(script)
+					? { tag: "script", attributes: { src: binotype.Site.Page.Path.absolutify(script) } }
 					: { tag: "script", content: script },
 			) ?? []),
 
@@ -53,7 +52,7 @@ export const Head: FunctionalComponent<Readonly<Head.Properties>> = ({ context }
 }
 export namespace Head {
 	export interface Properties {
-		context: Context
+		context: binotype.Context
 	}
 }
 interface Element {

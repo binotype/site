@@ -7,7 +7,7 @@ export const Header: FunctionalComponent<Header.Properties> & {
 Header.override = (
 	{ title, ...meta }: Header.Properties,
 	children: VNode[],
-	utils: FunctionalUtilities,
+	_utils: FunctionalUtilities,
 ): VNode | VNode[] | null => (
 	<header>
 		<h1>{title}</h1>

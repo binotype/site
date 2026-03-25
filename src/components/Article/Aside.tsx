@@ -6,7 +6,7 @@ export const Aside: FunctionalComponent<Aside.Properties> & {
 Aside.override = (
 	{ title, summary, image }: Aside.Properties,
 	children: VNode[],
-	utils: FunctionalUtilities,
+	_utils: FunctionalUtilities,
 ): VNode | VNode[] | null => (
 	<aside>
 		{image && <img src={image} title={title} alt={summary} />}
