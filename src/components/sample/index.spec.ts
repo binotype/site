@@ -1,6 +1,6 @@
 import { binotype } from "@binotype/model"
 import { describe, expect, it, test } from "vitest"
-import { BinotypeSite } from "./index"
+import { BinotypeSample } from "./index"
 
 describe("binotype-site", () => {
 	const validSiteData: binotype.Site = {
@@ -13,17 +13,17 @@ describe("binotype-site", () => {
 	}
 
 	it("should create component class", () => {
-		expect(BinotypeSite).toBeDefined()
+		expect(BinotypeSample).toBeDefined()
 	})
 
 	it("should have correct tag name", () => {
 		// Basic test to verify the component exists
-		const component = new BinotypeSite()
-		expect(component).toBeInstanceOf(BinotypeSite)
+		const component = new BinotypeSample()
+		expect(component).toBeInstanceOf(BinotypeSample)
 	})
 
 	it("should have componentWillLoad method", () => {
-		const component = new BinotypeSite()
+		const component = new BinotypeSample()
 		expect(typeof component.componentWillLoad).toBe("function")
 	})
 
@@ -39,7 +39,7 @@ describe("binotype-site", () => {
 			expectedCache: validSiteData,
 		},
 	])("should handle $name", ({ siteValue, expectedCache }) => {
-		const component = new BinotypeSite()
+		const component = new BinotypeSample()
 		component.site = siteValue
 		component.componentWillLoad()
 		expect(component.cache).toEqual(expectedCache)
@@ -55,7 +55,7 @@ describe("binotype-site", () => {
 			siteValue: '{"invalid": json}',
 		},
 	])("should handle $name gracefully", ({ siteValue }) => {
-		const component = new BinotypeSite()
+		const component = new BinotypeSample()
 		expect(() => {
 			component.site = siteValue
 			component.componentWillLoad()
@@ -83,7 +83,7 @@ describe("binotype-site", () => {
 	})
 
 	test.each([undefined, null])("should handle %s site prop", siteValue => {
-		const component = new BinotypeSite()
+		const component = new BinotypeSample()
 		component.site = siteValue as any
 		component.componentWillLoad()
 		expect(component.cache).toBe(siteValue)

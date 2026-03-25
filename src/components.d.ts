@@ -8,6 +8,13 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { binotype } from "@binotype/model";
 export { binotype } from "@binotype/model";
 export namespace Components {
+    interface BinotypeSample {
+        /**
+          * @default false
+         */
+        "debug": boolean | "site" | "context";
+        "site"?: binotype.Site | string;
+    }
     interface BinotypeSite {
         /**
           * @default false
@@ -17,6 +24,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLBinotypeSampleElement extends Components.BinotypeSample, HTMLStencilElement {
+    }
+    var HTMLBinotypeSampleElement: {
+        prototype: HTMLBinotypeSampleElement;
+        new (): HTMLBinotypeSampleElement;
+    };
     interface HTMLBinotypeSiteElement extends Components.BinotypeSite, HTMLStencilElement {
     }
     var HTMLBinotypeSiteElement: {
@@ -24,10 +37,18 @@ declare global {
         new (): HTMLBinotypeSiteElement;
     };
     interface HTMLElementTagNameMap {
+        "binotype-sample": HTMLBinotypeSampleElement;
         "binotype-site": HTMLBinotypeSiteElement;
     }
 }
 declare namespace LocalJSX {
+    interface BinotypeSample {
+        /**
+          * @default false
+         */
+        "debug"?: boolean | "site" | "context";
+        "site"?: binotype.Site | string;
+    }
     interface BinotypeSite {
         /**
           * @default false
@@ -36,12 +57,17 @@ declare namespace LocalJSX {
         "site"?: binotype.Site | string;
     }
 
+    interface BinotypeSampleAttributes {
+        "site": binotype.Site | string;
+        "debug": string;
+    }
     interface BinotypeSiteAttributes {
         "site": binotype.Site | string;
         "debug": string;
     }
 
     interface IntrinsicElements {
+        "binotype-sample": Omit<BinotypeSample, keyof BinotypeSampleAttributes> & { [K in keyof BinotypeSample & keyof BinotypeSampleAttributes]?: BinotypeSample[K] } & { [K in keyof BinotypeSample & keyof BinotypeSampleAttributes as `attr:${K}`]?: BinotypeSampleAttributes[K] } & { [K in keyof BinotypeSample & keyof BinotypeSampleAttributes as `prop:${K}`]?: BinotypeSample[K] };
         "binotype-site": Omit<BinotypeSite, keyof BinotypeSiteAttributes> & { [K in keyof BinotypeSite & keyof BinotypeSiteAttributes]?: BinotypeSite[K] } & { [K in keyof BinotypeSite & keyof BinotypeSiteAttributes as `attr:${K}`]?: BinotypeSiteAttributes[K] } & { [K in keyof BinotypeSite & keyof BinotypeSiteAttributes as `prop:${K}`]?: BinotypeSite[K] };
     }
 }
@@ -49,6 +75,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "binotype-sample": LocalJSX.IntrinsicElements["binotype-sample"] & JSXBase.HTMLAttributes<HTMLBinotypeSampleElement>;
             "binotype-site": LocalJSX.IntrinsicElements["binotype-site"] & JSXBase.HTMLAttributes<HTMLBinotypeSiteElement>;
         }
     }
