@@ -5,78 +5,64 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { binotype } from "@binotype/model";
-export { binotype } from "@binotype/model";
 export namespace Components {
-    interface BinotypeSample {
+    interface MyComponent {
         /**
-          * @default false
+          * The first name
          */
-        "debug": boolean | "site" | "context";
-        "site"?: binotype.Site | string;
-    }
-    interface BinotypeSite {
+        "first"?: string;
         /**
-          * @default false
+          * The last name
          */
-        "debug": boolean | "site" | "context";
-        "site"?: binotype.Site | string;
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
     }
 }
 declare global {
-    interface HTMLBinotypeSampleElement extends Components.BinotypeSample, HTMLStencilElement {
+    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
-    var HTMLBinotypeSampleElement: {
-        prototype: HTMLBinotypeSampleElement;
-        new (): HTMLBinotypeSampleElement;
-    };
-    interface HTMLBinotypeSiteElement extends Components.BinotypeSite, HTMLStencilElement {
-    }
-    var HTMLBinotypeSiteElement: {
-        prototype: HTMLBinotypeSiteElement;
-        new (): HTMLBinotypeSiteElement;
+    var HTMLMyComponentElement: {
+        prototype: HTMLMyComponentElement;
+        new (): HTMLMyComponentElement;
     };
     interface HTMLElementTagNameMap {
-        "binotype-sample": HTMLBinotypeSampleElement;
-        "binotype-site": HTMLBinotypeSiteElement;
+        "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
-    interface BinotypeSample {
+    interface MyComponent {
         /**
-          * @default false
+          * The first name
          */
-        "debug"?: boolean | "site" | "context";
-        "site"?: binotype.Site | string;
-    }
-    interface BinotypeSite {
+        "first"?: string;
         /**
-          * @default false
+          * The last name
          */
-        "debug"?: boolean | "site" | "context";
-        "site"?: binotype.Site | string;
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
     }
 
-    interface BinotypeSampleAttributes {
-        "site": binotype.Site | string;
-        "debug": string;
-    }
-    interface BinotypeSiteAttributes {
-        "site": binotype.Site | string;
-        "debug": string;
+    interface MyComponentAttributes {
+        "first": string;
+        "middle": string;
+        "last": string;
     }
 
     interface IntrinsicElements {
-        "binotype-sample": Omit<BinotypeSample, keyof BinotypeSampleAttributes> & { [K in keyof BinotypeSample & keyof BinotypeSampleAttributes]?: BinotypeSample[K] } & { [K in keyof BinotypeSample & keyof BinotypeSampleAttributes as `attr:${K}`]?: BinotypeSampleAttributes[K] } & { [K in keyof BinotypeSample & keyof BinotypeSampleAttributes as `prop:${K}`]?: BinotypeSample[K] };
-        "binotype-site": Omit<BinotypeSite, keyof BinotypeSiteAttributes> & { [K in keyof BinotypeSite & keyof BinotypeSiteAttributes]?: BinotypeSite[K] } & { [K in keyof BinotypeSite & keyof BinotypeSiteAttributes as `attr:${K}`]?: BinotypeSiteAttributes[K] } & { [K in keyof BinotypeSite & keyof BinotypeSiteAttributes as `prop:${K}`]?: BinotypeSite[K] };
+        "my-component": Omit<MyComponent, keyof MyComponentAttributes> & { [K in keyof MyComponent & keyof MyComponentAttributes]?: MyComponent[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `attr:${K}`]?: MyComponentAttributes[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `prop:${K}`]?: MyComponent[K] };
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "binotype-sample": LocalJSX.IntrinsicElements["binotype-sample"] & JSXBase.HTMLAttributes<HTMLBinotypeSampleElement>;
-            "binotype-site": LocalJSX.IntrinsicElements["binotype-site"] & JSXBase.HTMLAttributes<HTMLBinotypeSiteElement>;
+            "my-component": LocalJSX.IntrinsicElements["my-component"] & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }
 }

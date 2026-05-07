@@ -1,12 +1,12 @@
-export type * from "./components.d.ts"
-export { Article } from "./components/binotype/Article"
-export { Footer } from "./components/binotype/Footer"
-export { Head } from "./components/binotype/Head"
-export { Header } from "./components/binotype/Header"
-export { Link } from "./components/binotype/Link"
-export { List } from "./components/binotype/List"
-export { Menu } from "./components/binotype/Menu"
-export { Navigation } from "./components/binotype/Navigation"
-export { Page } from "./components/binotype/Page"
-export { SelfLink } from "./components/binotype/SelfLink"
-export { Single } from "./components/binotype/Single"
+/**
+ * @fileoverview entry point for your component library
+ *
+ * This is the entry point for your component library. Use this file to export utilities,
+ * constants or data structure that accompany your components.
+ *
+ * DO NOT use this file to export your components. Instead, use the recommended approaches
+ * to consume components of this package as outlined in the `README.md`.
+ */
+
+export { format } from './utils/utils';
+export type * from './components.d.ts';
