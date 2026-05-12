@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
+    interface BinotypeSite {
         /**
           * The first name
          */
@@ -22,18 +22,18 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLBinotypeSiteElement extends Components.BinotypeSite, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLBinotypeSiteElement: {
+        prototype: HTMLBinotypeSiteElement;
+        new (): HTMLBinotypeSiteElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "binotype-site": HTMLBinotypeSiteElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
+    interface BinotypeSite {
         /**
           * The first name
          */
@@ -48,21 +48,21 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
 
-    interface MyComponentAttributes {
+    interface BinotypeSiteAttributes {
         "first": string;
         "middle": string;
         "last": string;
     }
 
     interface IntrinsicElements {
-        "my-component": Omit<MyComponent, keyof MyComponentAttributes> & { [K in keyof MyComponent & keyof MyComponentAttributes]?: MyComponent[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `attr:${K}`]?: MyComponentAttributes[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `prop:${K}`]?: MyComponent[K] };
+        "binotype-site": Omit<BinotypeSite, keyof BinotypeSiteAttributes> & { [K in keyof BinotypeSite & keyof BinotypeSiteAttributes]?: BinotypeSite[K] } & { [K in keyof BinotypeSite & keyof BinotypeSiteAttributes as `attr:${K}`]?: BinotypeSiteAttributes[K] } & { [K in keyof BinotypeSite & keyof BinotypeSiteAttributes as `prop:${K}`]?: BinotypeSite[K] };
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.IntrinsicElements["my-component"] & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "binotype-site": LocalJSX.IntrinsicElements["binotype-site"] & JSXBase.HTMLAttributes<HTMLBinotypeSiteElement>;
         }
     }
 }
