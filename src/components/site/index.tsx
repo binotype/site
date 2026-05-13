@@ -1,44 +1,44 @@
-import { Component, Fragment, Prop, h } from "@stencil/core"
-import { format } from "../../utils/utils"
-import Test from "../Test"
-import { Link } from "../Link"
+import { binotype } from "@binotype/model"
+import { Component, ComponentWillLoad, Fragment, h, Host, Prop, State, VNode, Watch } from "@stencil/core"
+import { Node } from "../Node"
+import { Page } from "../Page"
+import "../polyfill"
 
-@Component({ tag: "binotype-site", styleUrl: "style.css", shadow: true })
-export class BinotypeSite {
-	/**
-	 * The first name
-	 */
-	@Prop() first?: string
-
-	/**
-	 * The middle name
-	 */
-	@Prop() middle?: string
-
-	/**
-	 * The last name
-	 */
-	@Prop() last?: string
-
-	private getText(): string {
-		return format(this.first, this.middle, this.last)
+@Component({ tag: "binotype-site", styleUrl: "style.css" })
+export class BinotypeSite implements ComponentWillLoad {
+	@Prop() site?: binotype.Site<VNode> | string
+	@Prop() debug: boolean | "site" | "context" = false
+	@State() cache?: binotype.Site<VNode>
+	@Watch("site")
+	componentWillLoad() {
+		this.cache = typeof this.site == "string" ? JSON.parse(this.site) : this.site
 	}
-
 	render() {
 		return (
-			<Fragment>
-				<div>Hello, World! I'm {this.getText()}</div>
-				<Test label={this.getText()} count={0}></Test>
-				<Link link="https://stenciljs.com">Visit Stencil</Link>
-			</Fragment>
+			<Host>
+				{binotype.Site.getType(Node.type as any).is(this.cache) ? (
+					[
+						<Page site={this.cache} debug={this.debug == true || this.debug == "context"}></Page>,
+						(this.debug == true || this.debug == "site") && (
+							<details>
+								<summary>
+									<h1>Site Configuration</h1>
+								</summary>
+								<code>
+									<pre>{JSON.stringify(this.cache, undefined, 2)}</pre>
+								</code>
+							</details>
+						)
+					]
+				) : (
+					<Fragment>
+						<h1>Flawed Site Configuration</h1>
+						<code>
+							<pre>{JSON.stringify(binotype.Site.getType(Node.type as any).flawed(this.cache), undefined, 2)}</pre>
+						</code>
+					</Fragment>
+				)}
+			</Host>
 		)
 	}
 }
-
-const OldLink = Link.override
-Link.override = ({ link }: Link.Properties, children, _utils) =>
-	link && (
-		<div style={{ color: "green", fontSize: "20px" }}>
-			<OldLink link={link}>{children}</OldLink>
-		</div>
-	)

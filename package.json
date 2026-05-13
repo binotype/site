@@ -13,14 +13,6 @@
 			"import": "./dist/binotype/binotype.esm.js",
 			"require": "./dist/binotype/binotype.cjs.js"
 		},
-		"./test": {
-			"import": "./dist/collection/components/Test.js",
-			"types": "./dist/types/components/Test.d.ts"
-		},
-		"./link": {
-			"import": "./dist/collection/components/Link.js",
-			"types": "./dist/types/components/Link.d.ts"
-		},
 		"./components": {
 			"import": "./dist/collection/components/index.js",
 			"types": "./dist/types/components/index.d.ts"
@@ -77,6 +69,10 @@
 	},
 	"license": "MIT",
 	"dependencies": {
-		"@binotype/model": "^1.7.0"
+		"@binotype/model": "^2.0.0-beta.18",
+		"tidily": "^0.2.7"
+	},
+	"overrides": {
+		"isoly": "^3.1.8"
 	}
 }

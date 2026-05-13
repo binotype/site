@@ -5,20 +5,17 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { binotype } from "@binotype/model";
+import { VNode } from "@stencil/core";
+export { binotype } from "@binotype/model";
+export { VNode } from "@stencil/core";
 export namespace Components {
     interface BinotypeSite {
         /**
-          * The first name
+          * @default false
          */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+        "debug": boolean | "site" | "context";
+        "site"?: binotype.Site<VNode> | string;
     }
 }
 declare global {
@@ -35,23 +32,15 @@ declare global {
 declare namespace LocalJSX {
     interface BinotypeSite {
         /**
-          * The first name
+          * @default false
          */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+        "debug"?: boolean | "site" | "context";
+        "site"?: binotype.Site<VNode> | string;
     }
 
     interface BinotypeSiteAttributes {
-        "first": string;
-        "middle": string;
-        "last": string;
+        "site": binotype.Site<VNode> | string;
+        "debug": string;
     }
 
     interface IntrinsicElements {

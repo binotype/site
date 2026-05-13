@@ -8,6 +8,7 @@
  * to consume components of this package as outlined in the `README.md`.
  */
 
-export { Link, Test } from "./components/index"
+export * from "@binotype/model"
 export type * from "./components.d.ts"
+export * as components from "./components/index"
 export { format } from "./utils/utils"
