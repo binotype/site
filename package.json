@@ -17,9 +17,17 @@
 			"import": "./dist/collection/components/Test.js",
 			"types": "./dist/types/components/Test.d.ts"
 		},
-		"./my-component": {
-			"import": "./dist/components/my-component.js",
-			"types": "./dist/components/my-component.d.ts"
+		"./link": {
+			"import": "./dist/collection/components/Link.js",
+			"types": "./dist/types/components/Link.d.ts"
+		},
+		"./components": {
+			"import": "./dist/collection/components/index.js",
+			"types": "./dist/types/components/index.d.ts"
+		},
+		"./binotype-site": {
+			"import": "./dist/components/binotype-site.js",
+			"types": "./dist/components/binotype-site.d.ts"
 		},
 		"./loader": {
 			"import": "./loader/index.js",
