@@ -10,8 +10,14 @@
 	"unpkg": "dist/binotype/binotype.esm.js",
 	"exports": {
 		".": {
-			"import": "./dist/binotype/binotype.esm.js",
-			"require": "./dist/binotype/binotype.cjs.js"
+			"types": "./dist/types/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs.js"
+		},
+		"./parser": {
+			"types": "./dist/types/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs.js"
 		},
 		"./components": {
 			"import": "./dist/collection/components/index.js",
