@@ -11,17 +11,19 @@
 	"exports": {
 		".": {
 			"types": "./dist/types/index.d.ts",
-			"import": "./dist/index.js",
-			"require": "./dist/index.cjs.js"
+			"import": "./dist/index.js"
 		},
 		"./parser": {
 			"types": "./dist/types/index.d.ts",
-			"import": "./dist/index.js",
-			"require": "./dist/index.cjs.js"
+			"import": "./dist/index.js"
 		},
 		"./components": {
 			"import": "./dist/collection/components/index.js",
 			"types": "./dist/types/components/index.d.ts"
+		},
+		"./components/*": {
+			"import": "./dist/components/*.js",
+			"types": "./dist/types/components/*.d.ts"
 		},
 		"./binotype-site": {
 			"import": "./dist/components/binotype-site.js",
@@ -29,7 +31,6 @@
 		},
 		"./loader": {
 			"import": "./loader/index.js",
-			"require": "./loader/index.cjs",
 			"types": "./loader/index.d.ts"
 		}
 	},
@@ -53,8 +54,8 @@
 		"release": true
 	},
 	"scripts": {
-		"build": "stencil build --prerender",
-		"start": "stencil build --prerender --dev --watch --serve",
+		"build": "stencil build",
+		"start": "stencil build --dev --watch --serve",
 		"test": "stencil-test --prod",
 		"test:watch": "stencil-test --prod --watch",
 		"generate": "stencil generate",
