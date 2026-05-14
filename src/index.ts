@@ -7,7 +7,7 @@
  * DO NOT use this file to export your components. Instead, use the recommended approaches
  * to consume components of this package as outlined in the `README.md`.
  */
-
+import "./polyfill"
 export * as model from "@binotype/model"
 export type * from "./components.d.ts"
 export * as components from "./components/index"

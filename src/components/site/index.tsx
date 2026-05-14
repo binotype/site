@@ -1,8 +1,8 @@
+import "../../polyfill"
 import { binotype } from "@binotype/model"
 import { Component, ComponentWillLoad, Fragment, h, Host, Prop, State, VNode, Watch } from "@stencil/core"
 import { Node } from "../Node"
 import { Page } from "../Page"
-import "../polyfill"
 
 @Component({ tag: "binotype-site", styleUrl: "style.css" })
 export class BinotypeSite implements ComponentWillLoad {
