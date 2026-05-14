@@ -12,7 +12,8 @@ export const config: Config = {
 		{ type: "docs-readme" },
 		{
 			type: "www",
-			serviceWorker: null // disable service workers
+			serviceWorker: null, // disable service workers
+			baseUrl: "https://site.binotype.org"
 		}
 	]
 }
