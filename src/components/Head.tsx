@@ -1,5 +1,6 @@
 import { Fragment, FunctionalComponent, h, VNode } from "@stencil/core"
-import { binotype } from "@binotype/model"
+import { Context } from "../Context"
+import { Path } from "../Path"
 
 export const Head: FunctionalComponent<Readonly<Head.Properties>> = ({ context }) => {
 	const result: HTMLElement[] = (
@@ -12,18 +13,15 @@ export const Head: FunctionalComponent<Readonly<Head.Properties>> = ({ context }
 				attributes: { name: "viewport", content: "width=device-width, initial-scale=1.0, maximum-scale=1" }
 			},
 			{ tag: "title", content: context.title },
-			context.design.icon && {
-				tag: "link",
-				attributes: { rel: "icon", href: binotype.Path.absolutify(context.design.icon) }
-			},
+			context.design.icon && { tag: "link", attributes: { rel: "icon", href: Path.absolutify(context.design.icon) } },
 			...(context.design?.styles?.map(style =>
-				binotype.Path.isUrl(style)
-					? { tag: "link", attributes: { rel: "stylesheet", href: binotype.Path.absolutify(style) } }
+				Path.isUrl(style)
+					? { tag: "link", attributes: { rel: "stylesheet", href: Path.absolutify(style) } }
 					: { tag: "style", content: style }
 			) ?? []),
 			...(context.design?.scripts?.map(script =>
-				binotype.Path.isUrl(script)
-					? { tag: "script", attributes: { src: binotype.Path.absolutify(script) } }
+				Path.isUrl(script)
+					? { tag: "script", attributes: { src: Path.absolutify(script) } }
 					: { tag: "script", content: script }
 			) ?? []),
 
@@ -52,7 +50,7 @@ export const Head: FunctionalComponent<Readonly<Head.Properties>> = ({ context }
 }
 export namespace Head {
 	export interface Properties {
-		context: binotype.Context<VNode>
+		context: Context<VNode>
 	}
 }
 interface Element {

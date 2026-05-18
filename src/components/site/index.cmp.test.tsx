@@ -1,6 +1,6 @@
-import { binotype } from "@binotype/model"
 import { VNode } from "@stencil/core"
 import { describe, expect, h, it, render } from "@stencil/vitest"
+import { Site } from "../../Site"
 
 describe("binotype-site", () => {
 	it.each([
@@ -17,7 +17,7 @@ describe("binotype-site", () => {
 							tagline: "Simple test site",
 							design: {},
 							page: {}
-						} satisfies binotype.Site<VNode>
+						} satisfies Site<VNode>
 					}></binotype-site>
 			)
 		}

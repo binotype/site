@@ -1,14 +1,14 @@
-import { binotype } from "@binotype/model"
 import { FunctionalComponent, FunctionalUtilities, h, VNode } from "@stencil/core"
 import { isoly } from "isoly"
 import { tidily } from "tidily"
+import { Context } from "../../Context"
 
 // Keep disabled metadata variants out of JSX children; Stencil can treat JSX comments as plain objects.
-export const Meta: FunctionalComponent<binotype.Context.Article<VNode>> & {
-	override: FunctionalComponent<binotype.Context.Article<VNode>>
+export const Meta: FunctionalComponent<Context.Article<VNode>> & {
+	override: FunctionalComponent<Context.Article<VNode>>
 } = (properties, children, utils) => Meta.override(properties, children, utils)
 Meta.override = (
-	{ published, changed, author }: binotype.Context.Article<VNode>,
+	{ published, changed, author }: Context.Article<VNode>,
 	children: VNode[],
 	_utils: FunctionalUtilities
 ): VNode | VNode[] | null => (

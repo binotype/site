@@ -1,5 +1,5 @@
 import { FunctionalComponent, FunctionalUtilities, h, VNode } from "@stencil/core"
-import { binotype } from "@binotype/model"
+import { Context } from "../Context"
 
 export const Footer: FunctionalComponent<Footer.Properties> & { override: FunctionalComponent<Footer.Properties> } = (
 	properties,
@@ -18,6 +18,6 @@ Footer.override = (
 )
 export namespace Footer {
 	export interface Properties {
-		context: binotype.Context<VNode>
+		context: Context<VNode>
 	}
 }

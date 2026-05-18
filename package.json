@@ -65,21 +65,21 @@
 		"verify": "npm run build && npm run lint && npm run test && npm audit --omit=dev"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.4.14",
-		"@stencil/core": "^4.27.1 || ^5.0.0-0",
-		"@stencil/vitest": "^1.8.3",
-		"@types/node": "^22.13.5",
-		"@vitest/browser-playwright": "^4.0.0",
-		"playwright": "^1.52.0",
+		"@biomejs/biome": "2.4.15",
+		"@stencil/core": "^4.43.4",
+		"@stencil/vitest": "^1.11.6",
+		"@types/node": "^25.9.0",
+		"@vitest/browser-playwright": "^4.1.6",
+		"playwright": "^1.60.0",
 		"rimraf": "6.1.3",
-		"vitest": "^4.0.0"
+		"vitest": "^4.1.6"
 	},
 	"license": "MIT",
 	"dependencies": {
-		"@binotype/model": "^2.0.0-beta.18",
+		"@typeup/dom": "1.0.11-beta.9",
+		"@typeup/parser": "1.2.5-beta.9",
+		"isly": "1.10.0",
+		"isoly": "3.1.8",
 		"tidily": "^0.2.7"
-	},
-	"overrides": {
-		"isoly": "^3.1.8"
 	}
 }

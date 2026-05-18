@@ -1,5 +1,6 @@
 import { FunctionalComponent, FunctionalUtilities, h, VNode } from "@stencil/core"
-import { binotype } from "@binotype/model"
+import { Context } from "../Context"
+import { Path } from "../Path"
 
 export const Header: FunctionalComponent<Readonly<Header.Properties>> & {
 	override: FunctionalComponent<Header.Properties>
@@ -14,7 +15,7 @@ Header.override = (
 			<a href={"/"}>
 				{context.design?.logotype ? (
 					<img
-						src={binotype.Path.absolutify(context.design.logotype)}
+						src={Path.absolutify(context.design.logotype)}
 						alt={`${context.title}${context.tagline ? ` · ${context.tagline}` : ""}`}
 					/>
 				) : (
@@ -28,6 +29,6 @@ Header.override = (
 )
 export namespace Header {
 	export interface Properties {
-		context: binotype.Context<VNode>
+		context: Context<VNode>
 	}
 }

@@ -1,0 +1,241 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`binotype.Context.Article > Article.convert > ('article to object') 1`] = `
+{
+  "articles": undefined,
+  "author": undefined,
+  "changed": undefined,
+  "class": [],
+  "content": "Test content",
+  "id": "p1",
+  "link": "/p1",
+  "list": {
+    "mode": "full",
+  },
+  "menu": true,
+  "meta": {},
+  "mode": "full",
+  "published": undefined,
+  "sections": undefined,
+  "subtitle": undefined,
+  "title": {
+    "formatted": "[p1]",
+    "plain": "[p1]",
+  },
+}
+`;
+
+exports[`binotype.Context.Article > Article.load > ('page with articles array') 1`] = `
+[
+  {
+    "class": [],
+    "content": "Test content 1",
+    "id": "p1",
+    "link": "/p1",
+    "list": {
+      "mode": "full",
+    },
+    "menu": true,
+    "meta": {},
+    "mode": "full",
+    "title": {
+      "formatted": "[p1]",
+      "plain": "[p1]",
+    },
+  },
+  {
+    "class": [],
+    "content": "Test content 2",
+    "id": "p2",
+    "link": "/p2",
+    "list": {
+      "mode": "full",
+    },
+    "menu": true,
+    "meta": {},
+    "mode": "full",
+    "title": {
+      "formatted": "[p2]",
+      "plain": "[p2]",
+    },
+  },
+]
+`;
+
+exports[`binotype.Context.Article > Article.load > ('reduction mode') 1`] = `
+{
+  "class": [],
+  "content": "Test content",
+  "id": "p1",
+  "link": "/p1",
+  "list": {
+    "mode": "full",
+  },
+  "menu": true,
+  "meta": {},
+  "mode": "full",
+  "title": {
+    "formatted": "[p1]",
+    "plain": "[p1]",
+  },
+}
+`;
+
+exports[`binotype.Context.Article > Article.load > ('simple page object') 1`] = `
+{
+  "class": [],
+  "content": "Test content",
+  "id": "p1",
+  "link": "/p1",
+  "list": {
+    "mode": "full",
+  },
+  "menu": true,
+  "meta": {},
+  "mode": "full",
+  "title": {
+    "formatted": "[p1]",
+    "plain": "[p1]",
+  },
+}
+`;
+
+exports[`binotype.Context.Article > Article.load > ('undefined page') 1`] = `undefined`;
+
+exports[`binotype.Context.Article > binotype.Context.Article.load > ('basic page with string content') 1`] = `
+{
+  "content": "This is the article content.",
+  "id": "test",
+  "link": "/test",
+  "list": {
+    "mode": "full",
+  },
+  "menu": true,
+  "mode": "full",
+  "title": {
+    "formatted": "Test Article",
+    "plain": "Test Article",
+  },
+}
+`;
+
+exports[`binotype.Context.Article > binotype.Context.Article.load > ('page with both string content and mod…') 1`] = `
+{
+  "content": "This content should be shown.",
+  "id": "body",
+  "link": "/body",
+  "list": {
+    "mode": "full",
+  },
+  "menu": true,
+  "mode": "body",
+  "title": {
+    "formatted": "Body Article",
+    "plain": "Body Article",
+  },
+}
+`;
+
+exports[`binotype.Context.Article > binotype.Context.Article.load > ('page with mode header (no content sho…') 1`] = `
+{
+  "id": "header",
+  "link": "/header",
+  "list": {
+    "mode": "full",
+  },
+  "menu": true,
+  "mode": "header",
+  "title": {
+    "formatted": "Header Only",
+    "plain": "Header Only",
+  },
+}
+`;
+
+exports[`binotype.Context.Article > binotype.Context.Article.load > ('page with object content (sections)') 1`] = `
+{
+  "id": "sections",
+  "link": "/sections",
+  "list": {
+    "mode": "full",
+  },
+  "menu": true,
+  "mode": "full",
+  "sections": [
+    {
+      "content": "Intro content",
+      "id": "intro",
+      "link": "/sections#intro",
+      "menu": true,
+      "mode": "full",
+      "title": {
+        "formatted": "Introduction",
+        "plain": "Introduction",
+      },
+    },
+    {
+      "content": "Main content",
+      "id": "main",
+      "link": "/sections#main",
+      "menu": true,
+      "mode": "full",
+      "title": {
+        "formatted": "Main Section",
+        "plain": "Main Section",
+      },
+    },
+  ],
+  "title": {
+    "formatted": "Page with Sections",
+    "plain": "Page with Sections",
+  },
+}
+`;
+
+exports[`binotype.Context.Article > binotype.Context.Article.load > ('page with sub-pages (articles)') 1`] = `
+{
+  "articles": [
+    {
+      "content": "Second post content",
+      "id": "post2",
+      "link": "/blog/post2",
+      "list": {
+        "mode": "full",
+      },
+      "menu": true,
+      "mode": "full",
+      "published": "2024-01-02T10:00:00Z",
+      "title": {
+        "formatted": "Second Post",
+        "plain": "Second Post",
+      },
+    },
+    {
+      "content": "First post content",
+      "id": "post1",
+      "link": "/blog/post1",
+      "list": {
+        "mode": "full",
+      },
+      "menu": true,
+      "mode": "full",
+      "published": "2024-01-01T10:00:00Z",
+      "title": {
+        "formatted": "First Post",
+        "plain": "First Post",
+      },
+    },
+  ],
+  "id": "blog",
+  "link": "/blog",
+  "list": {
+    "mode": "full",
+  },
+  "menu": true,
+  "mode": "full",
+  "title": {
+    "formatted": "Blog",
+    "plain": "Blog",
+  },
+}
+`;

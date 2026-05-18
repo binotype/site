@@ -1,0 +1,239 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`binotype.Context.Menu > Menu.convert > convert(''empty menu'') 1`] = `undefined`;
+
+exports[`binotype.Context.Menu > Menu.convert > convert(''menu with items'') 1`] = `
+{
+  "items": [
+    {
+      "description": "About page content",
+      "label": "About",
+      "url": "/about",
+    },
+    {
+      "description": "Contact page content",
+      "label": "Contact",
+      "selected": "current",
+      "url": "/contact",
+    },
+  ],
+}
+`;
+
+exports[`binotype.Context.Menu > Menu.convert > convert(''menu with nested items'') 1`] = `
+{
+  "items": [
+    {
+      "description": "Blog section",
+      "items": [
+        {
+          "description": "Blog post content",
+          "label": "First Post",
+          "selected": "current",
+          "url": "/blog/first-post",
+        },
+      ],
+      "label": "Blog",
+      "selected": "parent",
+      "url": "/blog",
+    },
+  ],
+}
+`;
+
+exports[`binotype.Context.Menu > load > load(''empty site'', ''/'') 1`] = `undefined`;
+
+exports[`binotype.Context.Menu > load > load(''simonmika.com'', ''article/to-live'') 1`] = `
+{
+  "items": [
+    {
+      "description": "Talks",
+      "items": [
+        {
+          "description": "Egenanställd Konsult",
+          "label": "Self-Employed Consultant",
+          "url": "/talk/egen-konsult",
+        },
+        {
+          "description": "Retro Game w/ Modern UI Tools",
+          "label": "Retro Game w/ Modern UI Tools",
+          "url": "/talk/retro-game-modern-ui-tools",
+        },
+        {
+          "description": "Recruiting and Become Recruited 2025",
+          "label": "Recruiting and Become Recruited 2025",
+          "url": "/talk/recruiting2025",
+        },
+        {
+          "description": "Recruiting and Become Recruited",
+          "label": "Recruiting and Become Recruited",
+          "url": "/talk/recruiting",
+        },
+        {
+          "description": "How I Use TypeScript",
+          "label": "How I Use TypeScript",
+          "url": "/talk/how-i-use-typescript",
+        },
+        {
+          "description": "On Programming",
+          "label": "On Programming",
+          "url": "/talk/on-programming",
+        },
+      ],
+      "label": "Talks",
+      "url": "/talk",
+    },
+    {
+      "description": "About",
+      "label": "About",
+      "url": "/about",
+    },
+  ],
+}
+`;
+
+exports[`binotype.Context.Menu > load > load(''site with blocks and pages'', ''/'') 1`] = `
+{
+  "items": [
+    {
+      "description": "Welcome",
+      "label": "Welcome",
+      "url": "/#hero",
+    },
+    {
+      "description": "Features",
+      "label": "Features",
+      "url": "/#features",
+    },
+    {
+      "description": "About",
+      "label": "About",
+      "url": "/about",
+    },
+  ],
+}
+`;
+
+exports[`binotype.Context.Menu > load > load(''site with menu disabled blocks'', ''/'') 1`] = `
+{
+  "items": [
+    {
+      "description": "Features",
+      "label": "Features",
+      "url": "/#features",
+    },
+    {
+      "description": "About",
+      "label": "About",
+      "url": "/about",
+    },
+  ],
+}
+`;
+
+exports[`binotype.Context.Menu > load > load(''site with multiple pages, current at …'', ''/'') 1`] = `
+{
+  "items": [
+    {
+      "description": "About",
+      "label": "About",
+      "url": "/about",
+    },
+    {
+      "description": "Contact Us",
+      "label": "Contact Us",
+      "url": "/contact",
+    },
+    {
+      "description": "Blog",
+      "items": [
+        {
+          "description": "First Post",
+          "label": "First Post",
+          "url": "/blog/first-post",
+        },
+      ],
+      "label": "Blog",
+      "url": "/blog",
+    },
+  ],
+}
+`;
+
+exports[`binotype.Context.Menu > load > load(''site with nested pages, current at ab…'', ''/about'') 1`] = `
+{
+  "items": [
+    {
+      "description": "About",
+      "label": "About",
+      "selected": "current",
+      "url": "/about",
+    },
+    {
+      "description": "Contact Us",
+      "label": "Contact Us",
+      "url": "/contact",
+    },
+    {
+      "description": "Blog",
+      "items": [
+        {
+          "description": "First Post",
+          "label": "First Post",
+          "url": "/blog/first-post",
+        },
+        {
+          "description": "Second Post",
+          "label": "Second Post",
+          "url": "/blog/second-post",
+        },
+      ],
+      "label": "Blog",
+      "url": "/blog",
+    },
+  ],
+}
+`;
+
+exports[`binotype.Context.Menu > load > load(''site with nested pages, current at bl…'', ''/blog/first-post'') 1`] = `
+{
+  "items": [
+    {
+      "description": "About",
+      "label": "About",
+      "url": "/about",
+    },
+    {
+      "description": "Blog",
+      "items": [
+        {
+          "description": "First Post",
+          "label": "First Post",
+          "selected": "current",
+          "url": "/blog/first-post",
+        },
+        {
+          "description": "Second Post",
+          "label": "Second Post",
+          "url": "/blog/second-post",
+        },
+      ],
+      "label": "Blog",
+      "selected": "parent",
+      "url": "/blog",
+    },
+  ],
+}
+`;
+
+exports[`binotype.Context.Menu > load > load(''site with single page'', ''/'') 1`] = `
+{
+  "items": [
+    {
+      "description": "About",
+      "label": "About",
+      "url": "/about",
+    },
+  ],
+}
+`;

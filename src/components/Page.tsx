@@ -1,5 +1,6 @@
 import { Fragment, FunctionalComponent, FunctionalUtilities, h, VNode } from "@stencil/core"
-import { binotype } from "@binotype/model"
+import { Context } from "../Context"
+import { Site } from "../Site"
 import { Footer } from "./Footer"
 import { Head } from "./Head"
 import { Header } from "./Header"
@@ -14,7 +15,7 @@ Page.override = (
 	children: VNode[],
 	_utils: FunctionalUtilities
 ): VNode | VNode[] | null => {
-	const context = binotype.Context.create(site, window.location.pathname)
+	const context = Context.create(site, window.location.pathname)
 	const navigation = <Navigation {...context.menu} />
 	return (
 		<Fragment>
@@ -41,7 +42,7 @@ Page.override = (
 }
 export namespace Page {
 	export interface Properties {
-		site: binotype.Site<VNode>
+		site: Site<VNode>
 		debug?: boolean
 	}
 }

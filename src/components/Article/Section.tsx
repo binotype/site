@@ -1,15 +1,15 @@
-import { binotype } from "@binotype/model"
 import { FunctionalComponent, FunctionalUtilities, h, VNode } from "@stencil/core"
 import { SelfLink } from "../SelfLink"
 import { Content } from "./Content"
 import { Header } from "./Header"
+import { Context } from "../../Context"
 
-export const Section: FunctionalComponent<binotype.Context.Section<VNode>> & {
-	override: FunctionalComponent<binotype.Context.Section<VNode>>
-	overrides: Partial<Record<string, FunctionalComponent<binotype.Context.Section<VNode>>>>
+export const Section: FunctionalComponent<Context.Section<VNode>> & {
+	override: FunctionalComponent<Context.Section<VNode>>
+	overrides: Partial<Record<string, FunctionalComponent<Context.Section<VNode>>>>
 } = (properties, children, utils) => Section.override(properties, children, utils)
 Section.override = (
-	properties: binotype.Context.Section<VNode>,
+	properties: Context.Section<VNode>,
 	children: VNode[],
 	_utils: FunctionalUtilities
 ): VNode | VNode[] | null =>
@@ -17,7 +17,7 @@ Section.override = (
 	|| null
 Section.overrides = {
 	default: (
-		section: binotype.Context.Section<VNode>,
+		section: Context.Section<VNode>,
 		children: VNode[],
 		_utils: FunctionalUtilities
 	): VNode | VNode[] | null => (

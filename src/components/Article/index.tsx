@@ -1,5 +1,5 @@
-import { binotype } from "@binotype/model"
 import { Fragment, FunctionalComponent, FunctionalUtilities, h, VNode } from "@stencil/core"
+import { Context } from "../../Context"
 import { SelfLink } from "../SelfLink"
 import { Aside } from "./Aside"
 import { Content } from "./Content"
@@ -8,7 +8,7 @@ import { Header } from "./Header"
 import { Section } from "./Section"
 import { Summary } from "./Summary"
 
-export const Article: FunctionalComponent<binotype.Context.Article<VNode>> & {
+export const Article: FunctionalComponent<Context.Article<VNode>> & {
 	SelfLink: typeof SelfLink
 	Aside: typeof Aside
 	Content: typeof Content
@@ -16,10 +16,10 @@ export const Article: FunctionalComponent<binotype.Context.Article<VNode>> & {
 	Header: typeof Header
 	Section: typeof Section
 	Summary: typeof Summary
-	override: FunctionalComponent<binotype.Context.Article<VNode>>
+	override: FunctionalComponent<Context.Article<VNode>>
 } = (properties, children, utils) => Article.override(properties, children, utils)
 Article.override = (
-	article: binotype.Context.Article<VNode>,
+	article: Context.Article<VNode>,
 	children: VNode[],
 	_: FunctionalUtilities
 ): VNode | VNode[] | null => (
