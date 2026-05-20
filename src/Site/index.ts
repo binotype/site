@@ -1,10 +1,10 @@
-import { isoly } from "isoly"
 import { isly } from "isly"
+import { isoly } from "isoly"
 import { Design } from "../Design"
-import { Page } from "../Page"
 import { Meta } from "../Meta"
+import { Page } from "../Page"
 
-export interface Site<Node> {
+export interface Site {
 	url: string
 	language: isoly.Locale
 	title: string
@@ -14,11 +14,15 @@ export interface Site<Node> {
 	author?: string
 	meta?: Meta
 	design: Design
-	page: Page<Node>
+	page: Page
 }
 export namespace Site {
-	export function getType<Node>(nodeType: isly.Type<Node>): isly.Object<Site<Node>> {
-		return isly.object<Site<Node>>(
+	export const {
+		type,
+		is,
+		flawed
+	}: isly.BindResult<Site, isly.Object<Site>> = isly
+		.object<Site>(
 			{
 				url: isly.string(),
 				language: isoly.Locale.type as any,
@@ -29,9 +33,9 @@ export namespace Site {
 				author: isly.string().optional(),
 				meta: Meta.type.optional(),
 				design: Design.type,
-				page: Page.getType<Node>(nodeType)
+				page: Page.type
 			},
-			`binotype.Site<${nodeType.name}>`
+			"binotype.Site"
 		)
-	}
+		.bind()
 }

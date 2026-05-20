@@ -29,6 +29,6 @@ Header.override = (
 )
 export namespace Header {
 	export interface Properties {
-		context: Context<VNode>
+		context: Context
 	}
 }

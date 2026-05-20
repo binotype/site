@@ -1,3 +1,4 @@
+import { Fragment, h } from "@stencil/core"
 import { describe, expect, it } from "vitest"
 import { binotype } from "../../index"
 
@@ -8,7 +9,7 @@ describe("binotype.Context.Section", () => {
 		it("should handle simple block object", () =>
 			expect(
 				binotype.Context.Section.load(
-					{ mode: "full", class: ["main"], meta: {}, content: "Block content" },
+					{ mode: "full", class: ["main"], meta: {}, content: <Fragment>Block content</Fragment> },
 					binotype.Path.parse("/b1"),
 					{}
 				)
@@ -17,9 +18,9 @@ describe("binotype.Context.Section", () => {
 			expect(
 				binotype.Context.Section.load(
 					{
-						b1: { mode: "full", class: ["main"], meta: {}, content: "Block content 1" },
-						b2: { mode: "full", class: ["side"], meta: {}, content: "Block content 2" }
-					} satisfies Record<string, binotype.Block<string>>,
+						b1: { mode: "full", class: ["main"], meta: {}, content: <Fragment>Block content 1</Fragment> },
+						b2: { mode: "full", class: ["side"], meta: {}, content: <Fragment>Block content 2</Fragment> }
+					} satisfies Record<string, binotype.Block>,
 					binotype.Path.parse("/"),
 					{}
 				)
@@ -27,7 +28,7 @@ describe("binotype.Context.Section", () => {
 		it("should handle fallback mode", () =>
 			expect(
 				binotype.Context.Section.load(
-					{ class: ["main"], meta: {}, content: "Block content" },
+					{ class: ["main"], meta: {}, content: <Fragment>Block content</Fragment> },
 					binotype.Path.parse("/b1"),
 					{ mode: "header" }
 				)
@@ -37,13 +38,12 @@ describe("binotype.Context.Section", () => {
 		it("should convert Section to object", () =>
 			expect(
 				binotype.Clean.clean(
-					binotype.Context.Section.convert(
+					binotype.Context.Section.toObject(
 						binotype.Context.Section.load(
-							{ mode: "full", class: ["main"], meta: {}, content: "Block content" },
+							{ mode: "full", class: ["main"], meta: {}, content: <Fragment>Block content</Fragment> },
 							binotype.Path.parse("/b1"),
 							{}
-						),
-						node => node
+						)
 					) as unknown
 				)
 			).toMatchSnapshot()))

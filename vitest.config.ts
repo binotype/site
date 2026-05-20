@@ -11,8 +11,10 @@ export default defineVitestConfig({
 			name: "resolve-extensionless-node-modules-imports",
 			enforce: "pre",
 			resolveId(source, importer) {
-				if (!importer || !importer.includes("/node_modules/")) return null
-				if (!source.startsWith(".") && !source.startsWith("/")) return null
+				if (!importer || !importer.includes("/node_modules/"))
+					return null
+				if (!source.startsWith(".") && !source.startsWith("/"))
+					return null
 				const base = path.resolve(path.dirname(importer), source)
 				const candidates = [
 					`${base}.js`,
@@ -20,7 +22,9 @@ export default defineVitestConfig({
 					path.join(base, "index.js"),
 					path.join(base, "index.node.js")
 				]
-				for (const candidate of candidates) if (existsSync(candidate)) return candidate
+				for (const candidate of candidates)
+					if (existsSync(candidate))
+						return candidate
 				return null
 			}
 		}
@@ -39,8 +43,23 @@ export default defineVitestConfig({
 		}
 	},
 	test: {
+		typecheck: { tsconfig: "./tsconfig.json" },
+		coverage: {
+			reporter: ["text", "json", "html"],
+			enabled: false,
+			cleanOnRerun: true,
+			thresholds: { statements: 45, branches: 30, functions: 35, lines: 45 }
+		},
+		globals: true,
+		include: [
+			"**/*.spec.[tj]s",
+			"src/**/*.unit.test.{ts,tsx}",
+			"src/**/*.cmp.test.{ts,tsx}"
+		],
+		testTimeout: 20000,
+		isolate: false,
+		exclude: ["node_modules", "dist"],
 		projects: [
-			// Unit tests - stencil environment for component logic
 			{
 				test: {
 					name: "unit",
@@ -49,7 +68,6 @@ export default defineVitestConfig({
 					server: { deps: { inline: ["isly", "isoly", "mendly", "tidily", "@typeup/dom", "@typeup/parser"] } }
 				}
 			},
-			// Component browser tests - real browser via Playwright
 			{
 				test: {
 					name: "browser",

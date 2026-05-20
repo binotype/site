@@ -4,11 +4,11 @@ import { tidily } from "tidily"
 import { Context } from "../../Context"
 
 // Keep disabled metadata variants out of JSX children; Stencil can treat JSX comments as plain objects.
-export const Meta: FunctionalComponent<Context.Article<VNode>> & {
-	override: FunctionalComponent<Context.Article<VNode>>
+export const Meta: FunctionalComponent<Context.Article> & {
+	override: FunctionalComponent<Context.Article>
 } = (properties, children, utils) => Meta.override(properties, children, utils)
 Meta.override = (
-	{ published, changed, author }: Context.Article<VNode>,
+	{ published, changed, author }: Context.Article,
 	children: VNode[],
 	_utils: FunctionalUtilities
 ): VNode | VNode[] | null => (

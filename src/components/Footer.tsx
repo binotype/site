@@ -18,6 +18,6 @@ Footer.override = (
 )
 export namespace Footer {
 	export interface Properties {
-		context: Context<VNode>
+		context: Context
 	}
 }

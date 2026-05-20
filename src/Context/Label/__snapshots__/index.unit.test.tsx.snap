@@ -1,0 +1,24 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`binotype.Context.Label > Label.get > should return a Label for a valid Title 1`] = `
+{
+  "formatted": {
+    "$attrs$": {
+      "__self": [Object],
+      "__source": {
+        "columnNumber": 77,
+        "fileName": "/home/smika/versioned/binotype/site/src/Context/Label/index.unit.test.tsx",
+        "lineNumber": 9,
+      },
+    },
+    "$children$": [
+      {
+        "$flags$": 0,
+        "$text$": "Long",
+      },
+    ],
+    "$flags$": 0,
+  },
+  "plain": "Short",
+}
+`;

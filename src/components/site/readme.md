@@ -10,7 +10,7 @@
 | Property | Attribute | Description | Type                             | Default     |
 | -------- | --------- | ----------- | -------------------------------- | ----------- |
 | `debug`  | `debug`   |             | `"context" \| "site" \| boolean` | `false`     |
-| `site`   | `site`    |             | `Site<VNode> \| string`          | `undefined` |
+| `site`   | `site`    |             | `Site \| string`                 | `undefined` |
 
 
 ----------------------------------------------

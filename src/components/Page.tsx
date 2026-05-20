@@ -42,7 +42,7 @@ Page.override = (
 }
 export namespace Page {
 	export interface Properties {
-		site: Site<VNode>
+		site: Site
 		debug?: boolean
 	}
 }

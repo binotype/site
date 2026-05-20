@@ -17,6 +17,6 @@ List.override = (
 )
 export namespace List {
 	export interface Properties {
-		article: Context.Article<VNode>
+		article: Context.Article
 	}
 }

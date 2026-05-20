@@ -19,7 +19,7 @@ export namespace Clean {
 			? undefined
 			: Array.isArray(dirty)
 				? (cleaned => (cleaned.length > 0 ? cleaned : undefined))(dirty.map(clean).filter(v => v !== undefined))
-				: typeof dirty == "object"
+				: typeof dirty == "object" && isPlainObject(dirty)
 					? ((cleaned: Record<string, unknown>) => (Object.keys(cleaned).length > 0 ? cleaned : undefined))(
 							Object.fromEntries(
 								Object.entries(dirty)
@@ -28,5 +28,9 @@ export namespace Clean {
 							)
 						)
 					: dirty
+	}
+	function isPlainObject(value: object): boolean {
+		const prototype = Object.getPrototypeOf(value)
+		return prototype === Object.prototype || prototype === null
 	}
 }

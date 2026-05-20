@@ -5,18 +5,22 @@ import { Mode } from "../Mode"
 import { Modes } from "../Modes"
 import { Path } from "../Path"
 
-export interface Page<Node> extends Block<Node> {
+export interface Page extends Block {
 	list?: Modes["list"]
 	draft?: boolean
 	published?: isoly.DateTime
 	changed?: isoly.DateTime
 	tags?: string[]
 	author?: string
-	pages?: Record<string, Page<Node> | undefined>
+	pages?: Record<string, Page | undefined>
 }
 export namespace Page {
-	export function getType<Node>(nodeType: isly.Type<Node>): isly.Object<Page<Node>> {
-		return Block.getType<Node>(nodeType).extend<Page<Node>>(
+	export const {
+		type,
+		is,
+		flawed
+	}: isly.BindResult<Page, isly.Object<Page>> = Block.type
+		.extend<Page>(
 			{
 				list: isly
 					.union(Mode.type, isly.object({ mode: Mode.type.optional(), limit: isly.number().optional() }))
@@ -29,30 +33,22 @@ export namespace Page {
 				pages: isly
 					.record(
 						isly.string(),
-						isly.lazy<Page<Node>>((): any => Page.getType<Node>(nodeType), `binotype.Page<${nodeType.name}>`)
+						isly.lazy((): any => Page.type, `binotype.Page`)
 					)
 					.optional()
 			},
-			`binotype.Page<${nodeType.name}>`
+			"binotype.Page"
 		)
+		.bind()
+	export function locate(page: Page | undefined, path: Path): Page | undefined {
+		return path.empty ? page : !page?.pages || !path.head ? undefined : locate(page.pages[path.get("head")], path.tail)
 	}
-	export function locate<Node>(page: Page<Node> | undefined, path: Path): Page<Node> | undefined {
-		return path.empty
-			? page
-			: !page?.pages || !path.head
-				? undefined
-				: locate<Node>(page.pages[path.get("head")], path.tail)
-	}
-	export function toArray<Node>(
-		pages: Record<string, Page<Node> | undefined> | undefined
-	): (Page<Node> & { id: string })[] {
+	export function toArray(pages: Record<string, Page | undefined> | undefined): (Page & { id: string })[] {
 		return Block.toArray(pages)
 			.filter(page => !page.draft && (!page.published || page.published <= isoly.DateTime.now()))
 			.sort((left, right) => (right.published ?? "z").localeCompare(left.published ?? "z"))
 	}
-	export function hasPages<Node>(
-		page: Page<Node> | undefined
-	): page is Page<Node> & { pages: Record<string, Page<Node> | undefined> } {
+	export function hasPages(page: Page | undefined): page is Page & { pages: Record<string, Page | undefined> } {
 		return !!page?.pages && Object.keys(page.pages).length > 0
 	}
 }

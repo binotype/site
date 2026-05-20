@@ -1,0 +1,238 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`binotype.Context.Menu > Menu.convert > convert(''empty menu'') 1`] = `undefined`;
+
+exports[`binotype.Context.Menu > Menu.convert > convert(''menu with items'') 1`] = `
+{
+  "items": [
+    {
+      "description": {
+        "children": [
+          {
+            "text": "Overview page content",
+          },
+        ],
+      },
+      "label": "Overview",
+      "url": "/overview",
+    },
+    {
+      "description": {
+        "children": [
+          {
+            "text": "Help page content",
+          },
+        ],
+      },
+      "label": "Help",
+      "selected": "current",
+      "url": "/help",
+    },
+  ],
+}
+`;
+
+exports[`binotype.Context.Menu > Menu.convert > convert(''menu with nested items'') 1`] = `
+{
+  "items": [
+    {
+      "description": {
+        "children": [
+          {
+            "text": "Guides section",
+          },
+        ],
+      },
+      "items": [
+        {
+          "description": {
+            "children": [
+              {
+                "text": "Guide content",
+              },
+            ],
+          },
+          "label": "Getting Started",
+          "selected": "current",
+          "url": "/guides/getting-started",
+        },
+      ],
+      "label": "Guides",
+      "selected": "parent",
+      "url": "/guides",
+    },
+  ],
+}
+`;
+
+exports[`binotype.Context.Menu > load > load(''empty site'', ''/'') 1`] = `undefined`;
+
+exports[`binotype.Context.Menu > load > load(''knowledge base sample'', ''article/performance-basics'') 1`] = `
+{
+  "items": [
+    {
+      "description": "Talks",
+      "items": [
+        {
+          "description": "Frontend Patterns",
+          "label": "Frontend Patterns",
+          "url": "/talk/frontend-patterns",
+        },
+      ],
+      "label": "Talks",
+      "url": "/talk",
+    },
+    {
+      "description": "About",
+      "label": "About",
+      "url": "/about",
+    },
+  ],
+}
+`;
+
+exports[`binotype.Context.Menu > load > load(''site with blocks and pages'', ''/'') 1`] = `
+{
+  "items": [
+    {
+      "description": "Welcome",
+      "label": "Welcome",
+      "url": "/#hero",
+    },
+    {
+      "description": "Features",
+      "label": "Features",
+      "url": "/#features",
+    },
+    {
+      "description": "Overview",
+      "label": "Overview",
+      "url": "/overview",
+    },
+  ],
+}
+`;
+
+exports[`binotype.Context.Menu > load > load(''site with menu disabled blocks'', ''/'') 1`] = `
+{
+  "items": [
+    {
+      "description": "Features",
+      "label": "Features",
+      "url": "/#features",
+    },
+    {
+      "description": "Overview",
+      "label": "Overview",
+      "url": "/overview",
+    },
+  ],
+}
+`;
+
+exports[`binotype.Context.Menu > load > load(''site with multiple pages, current at …'', ''/'') 1`] = `
+{
+  "items": [
+    {
+      "description": "Overview",
+      "label": "Overview",
+      "url": "/overview",
+    },
+    {
+      "description": "Help",
+      "label": "Help",
+      "url": "/help",
+    },
+    {
+      "description": "Guides",
+      "items": [
+        {
+          "description": "Getting Started",
+          "label": "Getting Started",
+          "url": "/guides/getting-started",
+        },
+      ],
+      "label": "Guides",
+      "url": "/guides",
+    },
+  ],
+}
+`;
+
+exports[`binotype.Context.Menu > load > load(''site with nested pages, current at gu…'', ''/guides/getting-started'') 1`] = `
+{
+  "items": [
+    {
+      "description": "Overview",
+      "label": "Overview",
+      "url": "/overview",
+    },
+    {
+      "description": "Guides",
+      "items": [
+        {
+          "description": "Getting Started",
+          "label": "Getting Started",
+          "selected": "current",
+          "url": "/guides/getting-started",
+        },
+        {
+          "description": "Advanced Usage",
+          "label": "Advanced Usage",
+          "url": "/guides/advanced-usage",
+        },
+      ],
+      "label": "Guides",
+      "selected": "parent",
+      "url": "/guides",
+    },
+  ],
+}
+`;
+
+exports[`binotype.Context.Menu > load > load(''site with nested pages, current at ov…'', ''/overview'') 1`] = `
+{
+  "items": [
+    {
+      "description": "Overview",
+      "label": "Overview",
+      "selected": "current",
+      "url": "/overview",
+    },
+    {
+      "description": "Help",
+      "label": "Help",
+      "url": "/help",
+    },
+    {
+      "description": "Guides",
+      "items": [
+        {
+          "description": "Getting Started",
+          "label": "Getting Started",
+          "url": "/guides/getting-started",
+        },
+        {
+          "description": "Advanced Usage",
+          "label": "Advanced Usage",
+          "url": "/guides/advanced-usage",
+        },
+      ],
+      "label": "Guides",
+      "url": "/guides",
+    },
+  ],
+}
+`;
+
+exports[`binotype.Context.Menu > load > load(''site with single page'', ''/'') 1`] = `
+{
+  "items": [
+    {
+      "description": "Overview",
+      "label": "Overview",
+      "url": "/overview",
+    },
+  ],
+}
+`;

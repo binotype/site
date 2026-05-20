@@ -10,7 +10,7 @@ import { Label as _Label } from "./Label"
 import { Menu as _Menu } from "./Menu"
 import { Section as _Section } from "./Section"
 
-export class Context<Node> {
+export class Context {
 	path: Path
 	get title(): string {
 		return this.site.title
@@ -30,18 +30,18 @@ export class Context<Node> {
 	get design(): Design {
 		return this.site.design
 	}
-	private _menu: Context.Menu<Node> | undefined
-	get menu(): Context.Menu<Node> {
+	private _menu: Context.Menu | undefined
+	get menu(): Context.Menu {
 		return (this._menu ??= Context.Menu.load(this.site, this.path.toString()))
 	}
-	private _article: Context.Article<Node> | undefined
-	get article(): Context.Article<Node> | undefined {
+	private _article: Context.Article | undefined
+	get article(): Context.Article | undefined {
 		return (this._article ??=
 			this.load(this.path)
-			?? Context.Article.load<Node>({ title: "Not Found", content: undefined }, this.path, { mode: "full" }))
+			?? Context.Article.load({ title: "Not Found", content: undefined }, this.path, { mode: "full" }))
 	}
 	private constructor(
-		private readonly site: Site<Node>,
+		private readonly site: Site,
 		path: Path | string
 	) {
 		this.path = typeof path == "string" ? Path.parse(path) : path
@@ -50,7 +50,7 @@ export class Context<Node> {
 		path: Path | string | undefined,
 		reduction?: Modes,
 		fallback: Modes = { mode: this.site.design.mode, list: this.site.design.list }
-	): Context.Article<Node> | undefined {
+	): Context.Article | undefined {
 		if (!(path instanceof Path)) path = Path.parse(path ?? "")
 		if (path.empty && this.site.design.home) path = Path.parse(this.site.design.home ?? "")
 		const page = Page.locate(this.site.page, path)
@@ -65,11 +65,11 @@ export class Context<Node> {
 			base: this.base,
 			url: this.url,
 			design: this.design,
-			menu: Context.Menu.convert(this.menu, node => node),
-			article: this.article && Context.Article.convert(this.article, node => node)
+			menu: Context.Menu.toObject(this.menu),
+			article: this.article && Context.Article.toObject(this.article)
 		}) as any
 	}
-	static create<Node>(site: Site<Node>, path: Path | string): Context<Node> {
+	static create(site: Site, path: Path | string): Context {
 		return new Context(site, path)
 	}
 }

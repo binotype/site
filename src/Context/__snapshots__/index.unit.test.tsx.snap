@@ -1,0 +1,427 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`binotype.Context > create(knowledge.example, '/', undefined) > context.load 1`] = `
+{
+  "articles": [
+    {
+      "id": "testingStrategy",
+      "link": "/article/testing-strategy",
+      "list": {
+        "mode": "header",
+      },
+      "menu": true,
+      "mode": "header",
+      "published": "2024-03-01T09:30:00+00:00",
+      "title": {
+        "formatted": "Testing Strategy",
+        "plain": "Testing Strategy",
+      },
+    },
+    {
+      "id": "performanceBasics",
+      "link": "/article/performance-basics",
+      "list": {
+        "mode": "header",
+      },
+      "menu": true,
+      "mode": "header",
+      "published": "2024-02-18T11:15:00+00:00",
+      "title": {
+        "formatted": "Performance Basics",
+        "plain": "Performance Basics",
+      },
+    },
+    {
+      "id": "clearWriting",
+      "link": "/article/clear-writing",
+      "list": {
+        "mode": "header",
+      },
+      "menu": true,
+      "mode": "header",
+      "published": "2024-01-10T10:00:00+00:00",
+      "title": {
+        "formatted": "Clear Writing",
+        "plain": "Clear Writing",
+      },
+    },
+  ],
+  "id": "article",
+  "link": "/article",
+  "list": {
+    "mode": "header",
+  },
+  "menu": true,
+  "mode": "full",
+  "title": {
+    "formatted": "Articles",
+    "plain": "Articles",
+  },
+}
+`;
+
+exports[`binotype.Context > create(knowledge.example, '/about', undefined) > context.load 1`] = `
+{
+  "author": "Documentation Team",
+  "content": {
+    "$attrs$": {
+      "__self": [Object],
+      "__source": {
+        "columnNumber": 11,
+        "fileName": "/home/smika/versioned/binotype/site/src/Context/index.unit.test.tsx",
+        "lineNumber": 152,
+      },
+    },
+    "$children$": [
+      {
+        "$flags$": 0,
+        "$text$": "This sample site is used to verify parsing, navigation, and rendering behavior in tests.",
+      },
+    ],
+    "$flags$": 0,
+  },
+  "id": "about",
+  "link": "/about",
+  "list": {
+    "mode": "header",
+  },
+  "menu": true,
+  "mode": "full",
+  "subtitle": {
+    "$attrs$": {
+      "__self": [Object],
+      "__source": {
+        "columnNumber": 20,
+        "fileName": "/home/smika/versioned/binotype/site/src/Context/index.unit.test.tsx",
+        "lineNumber": 148,
+      },
+    },
+    "$children$": [
+      {
+        "$flags$": 0,
+        "$text$": "About this sample site",
+      },
+    ],
+    "$flags$": 0,
+  },
+  "title": {
+    "formatted": "About",
+    "plain": "About",
+  },
+}
+`;
+
+exports[`binotype.Context > create(knowledge.example, '/article', { list: { limit: 5 } }) > context.load 1`] = `
+{
+  "articles": [
+    {
+      "id": "testingStrategy",
+      "link": "/article/testing-strategy",
+      "list": {
+        "limit": 5,
+        "mode": "header",
+      },
+      "menu": true,
+      "mode": "header",
+      "published": "2024-03-01T09:30:00+00:00",
+      "title": {
+        "formatted": "Testing Strategy",
+        "plain": "Testing Strategy",
+      },
+    },
+    {
+      "id": "performanceBasics",
+      "link": "/article/performance-basics",
+      "list": {
+        "limit": 5,
+        "mode": "header",
+      },
+      "menu": true,
+      "mode": "header",
+      "published": "2024-02-18T11:15:00+00:00",
+      "title": {
+        "formatted": "Performance Basics",
+        "plain": "Performance Basics",
+      },
+    },
+    {
+      "id": "clearWriting",
+      "link": "/article/clear-writing",
+      "list": {
+        "limit": 5,
+        "mode": "header",
+      },
+      "menu": true,
+      "mode": "header",
+      "published": "2024-01-10T10:00:00+00:00",
+      "title": {
+        "formatted": "Clear Writing",
+        "plain": "Clear Writing",
+      },
+    },
+  ],
+  "id": "article",
+  "link": "/article",
+  "list": {
+    "limit": 5,
+    "mode": "header",
+  },
+  "menu": true,
+  "mode": "full",
+  "title": {
+    "formatted": "Articles",
+    "plain": "Articles",
+  },
+}
+`;
+
+exports[`binotype.Context > create(knowledge.example, '/article', undefined) > context.load 1`] = `
+{
+  "articles": [
+    {
+      "id": "testingStrategy",
+      "link": "/article/testing-strategy",
+      "list": {
+        "mode": "header",
+      },
+      "menu": true,
+      "mode": "header",
+      "published": "2024-03-01T09:30:00+00:00",
+      "title": {
+        "formatted": "Testing Strategy",
+        "plain": "Testing Strategy",
+      },
+    },
+    {
+      "id": "performanceBasics",
+      "link": "/article/performance-basics",
+      "list": {
+        "mode": "header",
+      },
+      "menu": true,
+      "mode": "header",
+      "published": "2024-02-18T11:15:00+00:00",
+      "title": {
+        "formatted": "Performance Basics",
+        "plain": "Performance Basics",
+      },
+    },
+    {
+      "id": "clearWriting",
+      "link": "/article/clear-writing",
+      "list": {
+        "mode": "header",
+      },
+      "menu": true,
+      "mode": "header",
+      "published": "2024-01-10T10:00:00+00:00",
+      "title": {
+        "formatted": "Clear Writing",
+        "plain": "Clear Writing",
+      },
+    },
+  ],
+  "id": "article",
+  "link": "/article",
+  "list": {
+    "mode": "header",
+  },
+  "menu": true,
+  "mode": "full",
+  "title": {
+    "formatted": "Articles",
+    "plain": "Articles",
+  },
+}
+`;
+
+exports[`binotype.Context > create(knowledge.example, '/article/performance-basics', undefined) > context.load 1`] = `undefined`;
+
+exports[`binotype.Context > create(site, /) 1`] = `
+{
+  "article": {
+    "articles": [
+      {
+        "content": {
+          "children": [
+            {
+              "text": "About page content",
+            },
+          ],
+        },
+        "id": "about",
+        "link": "/about",
+        "list": {
+          "mode": "summary",
+        },
+        "menu": true,
+        "mode": "summary",
+        "title": {
+          "plain": "About",
+        },
+      },
+    ],
+    "id": "",
+    "link": "/",
+    "list": {
+      "mode": "summary",
+    },
+    "menu": true,
+    "mode": "full",
+    "title": {
+      "plain": "[]",
+    },
+  },
+  "base": "https://example.com",
+  "design": {
+    "icon": "/favicon.ico",
+    "list": "summary",
+    "logotype": "/logo.svg",
+    "navigation": "header",
+    "scripts": [
+      "/script.js",
+    ],
+    "styles": [
+      "/style.css",
+    ],
+  },
+  "menu": {
+    "items": [
+      {
+        "label": "About",
+        "url": "/about",
+      },
+    ],
+  },
+  "title": "Test Site",
+  "url": "https://example.com/",
+}
+`;
+
+exports[`binotype.Context > create(site, /about) 1`] = `
+{
+  "article": {
+    "content": {
+      "children": [
+        {
+          "text": "About page content",
+        },
+      ],
+    },
+    "id": "about",
+    "link": "/about",
+    "list": {
+      "mode": "summary",
+    },
+    "menu": true,
+    "mode": "full",
+    "title": {
+      "plain": "About",
+    },
+  },
+  "base": "https://example.com",
+  "design": {
+    "icon": "/favicon.ico",
+    "list": "summary",
+    "logotype": "/logo.svg",
+    "navigation": "header",
+    "scripts": [
+      "/script.js",
+    ],
+    "styles": [
+      "/style.css",
+    ],
+  },
+  "menu": {
+    "items": [
+      {
+        "label": "About",
+        "selected": "current",
+        "url": "/about",
+      },
+    ],
+  },
+  "title": "Test Site",
+  "url": "https://example.com/about",
+}
+`;
+
+exports[`binotype.Context > create(site, /nonexistent) 1`] = `
+{
+  "article": {
+    "id": "nonexistent",
+    "link": "/nonexistent",
+    "list": {
+      "mode": "full",
+    },
+    "menu": true,
+    "mode": "full",
+    "title": {
+      "plain": "Not Found",
+    },
+  },
+  "base": "https://example.com",
+  "design": {
+    "icon": "/favicon.ico",
+    "list": "summary",
+    "logotype": "/logo.svg",
+    "navigation": "header",
+    "scripts": [
+      "/script.js",
+    ],
+    "styles": [
+      "/style.css",
+    ],
+  },
+  "menu": {
+    "items": [
+      {
+        "label": "About",
+        "url": "/about",
+      },
+    ],
+  },
+  "title": "Test Site",
+  "url": "https://example.com/nonexistent",
+}
+`;
+
+exports[`binotype.Context > create(site, invalid-path) 1`] = `
+{
+  "article": {
+    "id": "invalidPath",
+    "link": "/invalid-path",
+    "list": {
+      "mode": "full",
+    },
+    "menu": true,
+    "mode": "full",
+    "title": {
+      "plain": "Not Found",
+    },
+  },
+  "base": "https://example.com",
+  "design": {
+    "icon": "/favicon.ico",
+    "list": "summary",
+    "logotype": "/logo.svg",
+    "navigation": "header",
+    "scripts": [
+      "/script.js",
+    ],
+    "styles": [
+      "/style.css",
+    ],
+  },
+  "menu": {
+    "items": [
+      {
+        "label": "About",
+        "url": "/about",
+      },
+    ],
+  },
+  "title": "Test Site",
+  "url": "https://example.com/invalid-path",
+}
+`;

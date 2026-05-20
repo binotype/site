@@ -1,19 +1,22 @@
 import { Content } from "../../Content"
 import { Title } from "../../Title"
 
-export interface Label<Node> {
+export interface Label {
 	plain: string
-	formatted: Content<Node>
+	formatted: Content
 }
 export namespace Label {
-	export function get<Node>(title: Title<Node>): Label<Node>
-	export function get<Node>(title: Title<Node> | undefined): Label<Node> | undefined
-	export function get<Node>(title: Title<Node> | undefined): Label<Node> | undefined {
+	export function get(title: Title): Label
+	export function get(title: Title | undefined): Label | undefined
+	export function get(title: Title | undefined): Label | undefined {
 		return title != undefined
-			? { plain: Title.get(title, "short"), formatted: Title.get(title, "long-short") as Content<Node> }
+			? { plain: Title.get(title, "short"), formatted: Title.get(title, "long-short") as Content }
 			: undefined
 	}
-	export function convert<Node, Target>(label: Label<Node>, from: (node: Node) => Target): Label<Content<Target>> {
-		return { plain: label.plain, formatted: label.formatted && Content.convert(label.formatted, from) }
+	export function toObject(label: Label | undefined): object | undefined {
+		return label && { plain: label.plain, formatted: Content.toObject(label.formatted) }
+	}
+	export function plain(label: Label): { plain: string; formatted: string | undefined } {
+		return { plain: label.plain, formatted: Content.plain(label.formatted) }
 	}
 }

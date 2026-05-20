@@ -2,11 +2,11 @@ import { FunctionalComponent, FunctionalUtilities, h, VNode } from "@stencil/cor
 import { Context } from "../../Context"
 import { Meta } from "./Meta"
 
-export const Header: FunctionalComponent<Context.Article<VNode> | Context.Section<VNode>> & {
-	override: FunctionalComponent<Context.Article<VNode> | Context.Section<VNode>>
+export const Header: FunctionalComponent<Context.Article | Context.Section> & {
+	override: FunctionalComponent<Context.Article | Context.Section>
 } = (properties, children, utils) => Header.override(properties, children, utils)
 Header.override = (
-	article: Context.Article<VNode> | Context.Section<VNode>,
+	article: Context.Article | Context.Section,
 	children: VNode[],
 	_utils: FunctionalUtilities
 ): VNode | VNode[] | null => (

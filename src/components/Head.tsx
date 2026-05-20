@@ -1,4 +1,4 @@
-import { Fragment, FunctionalComponent, h, VNode } from "@stencil/core"
+import { Fragment, FunctionalComponent, h } from "@stencil/core"
 import { Context } from "../Context"
 import { Path } from "../Path"
 
@@ -50,7 +50,7 @@ export const Head: FunctionalComponent<Readonly<Head.Properties>> = ({ context }
 }
 export namespace Head {
 	export interface Properties {
-		context: Context<VNode>
+		context: Context
 	}
 }
 interface Element {

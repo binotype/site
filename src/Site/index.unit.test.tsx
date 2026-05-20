@@ -1,4 +1,4 @@
-import { isly } from "isly"
+import { Fragment, h } from "@stencil/core"
 import { describe, expect, it } from "vitest"
 import { binotype } from "../index"
 
@@ -21,7 +21,7 @@ describe("binotype.Site", () => {
 				home: "article",
 				list: "header"
 			},
-			page: { pages: { about: { title: "About", content: "About page content" } } }
+			page: { pages: { about: { title: "About", content: <Fragment>About page content</Fragment> } } }
 		},
 		{
 			url: "https://example.com",
@@ -31,10 +31,9 @@ describe("binotype.Site", () => {
 			design: {},
 			page: { pages: {} }
 		}
-	] satisfies binotype.Site<string>[])("is(%#)", value =>
-		expect(binotype.Site.getType(isly.string()).is(value)).toBe(true))
+	] satisfies binotype.Site[])("is(%#)", value => expect(binotype.Site.is(value)).toBe(true))
 	it("should validate complex blog site structure", () => {
-		const complexBlog = {
+		const complexBlog: binotype.Site = {
 			url: "https://example.com",
 			language: "en-US",
 			title: "Sample Blog",
@@ -61,21 +60,31 @@ describe("binotype.Site", () => {
 								title: "Sample Post",
 								published: "2024-01-01T08:15:46+02:00",
 								tags: ["sample", "placeholder"],
-								content:
-									"This is a sample blog post with placeholder content.\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nThis is a sample quote for demonstration purposes."
+								content: (
+									<Fragment>
+										<p>This is a sample blog post with placeholder content.</p>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+										<p>This is a sample quote for demonstration purposes.</p>
+									</Fragment>
+								)
 							},
 							"another-sample": {
 								published: "2024-01-15T16:12:00+02:00",
 								tags: ["sample", "example"],
 								title: "Another Sample Post",
-								content:
-									"This is another sample post with placeholder content.\nSample Section\nExcepteur sint occaecat cupidatat non proident."
+								content: (
+									<Fragment>
+										<p>This is another sample post with placeholder content.</p>
+										<h1>Sample Section</h1>
+										<p>Excepteur sint occaecat cupidatat non proident.</p>
+									</Fragment>
+								)
 							},
 							"draft-post": {
 								draft: true,
 								tags: ["draft"],
 								title: "Draft Post",
-								content: "This is a draft post placeholder."
+								content: <Fragment>This is a draft post placeholder.</Fragment>
 							}
 						}
 					},
@@ -86,30 +95,64 @@ describe("binotype.Site", () => {
 								title: "Welcome to My Blog",
 								menu: false,
 								weight: 0,
-								content: "This is the home page of my sample blog."
+								content: <Fragment>This is the home page of my sample blog.</Fragment>
 							},
 							section2: {
 								title: "Latest Articles",
 								weight: 1,
-								content: "Check out the latest articles below:\n- Sample Post\n- Another Sample Post"
+								content: (
+									<Fragment>
+										Check out the latest articles below:
+										<ul>
+											<li> Sample Post</li>
+											<li> Another Sample Post</li>
+										</ul>
+									</Fragment>
+								)
 							}
 						}
 					},
 					about: {
 						title: "About",
-						content:
-							"I am [Your Name], and I create things.\nI live in [Your City], [Your Country] with my family.\nYou can find out more about me on LinkedIn and on GitHub."
+						content: (
+							<Fragment>
+								<p>I am [Your Name], and I create things.</p>
+								<p>I live in [Your City], [Your Country] with my family.</p>
+								<p>
+									You can find out more about me on <a href="https://linkedin.com">LinkedIn</a> and on{" "}
+									<a href="https://github.com">GitHub</a>.
+								</p>
+							</Fragment>
+						)
 					},
 					contact: {
 						title: "Contact",
 						menu: false,
-						content:
-							"Don't hesitate to contact me with ideas, suggestions and opinions.\nName: [Your Name]\nEmail: [Your Email]\nMessage: [Your Message]"
+						content: (
+							<Fragment>
+								<p>Don't hesitate to contact me with ideas, suggestions and opinions.</p>
+								<form>
+									<label htmlFor="name">
+										<strong>Name:</strong>
+									</label>
+									<input id="name" type="text" name="name" placeholder="Your Name" />
+									<label htmlFor="email">
+										<strong>Email:</strong>
+									</label>
+									<input id="email" type="email" name="email" placeholder="Your Email" />
+									<label htmlFor="message">
+										<strong>Message:</strong>
+									</label>
+									<textarea id="message" name="message" placeholder="Your Message"></textarea>
+									<button type="submit">Send</button>
+								</form>
+							</Fragment>
+						)
 					}
 				}
 			}
 		}
-		expect(binotype.Site.getType(isly.string()).is(complexBlog)).toBe(true)
-		expect(binotype.Site.getType(isly.string()).flawed(complexBlog)).toBe(false)
+		expect(binotype.Site.is(complexBlog)).toBe(true)
+		expect(binotype.Site.flawed(complexBlog)).toBe(false)
 	})
 })

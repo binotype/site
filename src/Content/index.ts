@@ -1,17 +1,22 @@
+import { VNode } from "@stencil/core"
 import { isly } from "isly"
+import { Node } from "./Node"
 
-export type Content<Node> = Node | Node[] | null
+export type Content = VNode | VNode[] | null
 
 export namespace Content {
-	export function getType<Node>(nodeType: isly.Type<Node>): isly.Union<Content<Node>> {
-		return isly
-			.union<Content<Node>>(nodeType, isly.array(nodeType), isly.null())
-			.rename(`binotype.Content<${nodeType.name}>`)
+	export const {
+		type,
+		is,
+		flawed
+	}: isly.BindResult<Content, isly.Union<Content>> = isly
+		.union<Content>(Node.type, Node.type.array(), isly.null())
+		.rename("binotype.Content")
+		.bind()
+	export function toObject(content: Content): object | object[] | undefined {
+		return content == null ? undefined : Array.isArray(content) ? content.map(toObject) : Node.Object.from(content)
 	}
-	export function convert<Node, Target>(content: Content<Node>, from: (node: Node) => Target): Content<Target> {
-		return content && (Array.isArray(content) ? content.map(from) : from(content))
-	}
-	export function plain<Node>(content: Content<Node>, plain: (node: Node) => string): string {
-		return content ? (Array.isArray(content) ? content.map(plain).join("") : plain(content)) : ""
+	export function plain(content: Content): string | undefined {
+		return content ? (Array.isArray(content) ? content.map(plain).join("") : Node.plain(content)) : undefined
 	}
 }

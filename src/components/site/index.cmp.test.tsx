@@ -1,4 +1,3 @@
-import { VNode } from "@stencil/core"
 import { describe, expect, h, it, render } from "@stencil/vitest"
 import { Site } from "../../Site"
 
@@ -17,7 +16,7 @@ describe("binotype-site", () => {
 							tagline: "Simple test site",
 							design: {},
 							page: {}
-						} satisfies Site<VNode>
+						} satisfies Site
 					}></binotype-site>
 			)
 		}

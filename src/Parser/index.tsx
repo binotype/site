@@ -1,4 +1,4 @@
-import { Fragment, h, VNode } from "@stencil/core"
+import { Fragment, h } from "@stencil/core"
 import { dom } from "@typeup/dom"
 import { parser } from "@typeup/parser"
 import { mendly } from "mendly"
@@ -12,7 +12,7 @@ import { Converter } from "./Converter"
 export class Parser {
 	constructor() {}
 
-	private async convert(content: string | dom.Block[] | undefined): Promise<Content<VNode>> {
+	private async convert(content: string | dom.Block[] | undefined): Promise<Content> {
 		return typeof content == "string" ? (
 			<Fragment>{content}</Fragment>
 		) : Array.isArray(content) ? (
@@ -21,12 +21,12 @@ export class Parser {
 			<Fragment></Fragment>
 		)
 	}
-	async import(type: "block", node: dom.Block.Section): Promise<Block<VNode> & { id: string }>
-	async import(type: "page", node: dom.Document): Promise<Page<VNode> & { id: string }>
+	async import(type: "block", node: dom.Block.Section): Promise<Block & { id: string }>
+	async import(type: "page", node: dom.Document): Promise<Page & { id: string }>
 	async import(
 		type: "block" | "page",
 		node: dom.Block.Section | dom.File
-	): Promise<(Block<VNode> & { id: string }) | (Page<VNode> & { id: string })> {
+	): Promise<(Block & { id: string }) | (Page & { id: string })> {
 		const properties = {
 			block: ["id", "weight", "title", "subtitle", "menu", "mode", "type", "class"],
 			page: ["draft", "published", "changed", "tags", "author"]
@@ -85,13 +85,13 @@ export class Parser {
 				: {})
 		}
 	}
-	async parse(content: string, name?: string): Promise<(Page<VNode> & { id: string }) | undefined> {
+	async parse(content: string, name?: string): Promise<(Page & { id: string }) | undefined> {
 		const document = parser.parse(
 			mendly.Reader.String.create(content, name ? mendly.Uri.parse(`file:///${name}`) : undefined)
 		)
 		return document && (await this.import("page", document))
 	}
-	async open(path: string): Promise<(Page<VNode> & { id: string }) | undefined> {
+	async open(path: string): Promise<(Page & { id: string }) | undefined> {
 		const document = parser.open(path)
 		return document && (await this.import("page", document))
 	}

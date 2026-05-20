@@ -17,6 +17,6 @@ Single.override = (
 )
 export namespace Single {
 	export interface Properties {
-		article: Context.Article<VNode>
+		article: Context.Article
 	}
 }

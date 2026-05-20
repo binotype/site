@@ -8,7 +8,7 @@ import { Header } from "./Header"
 import { Section } from "./Section"
 import { Summary } from "./Summary"
 
-export const Article: FunctionalComponent<Context.Article<VNode>> & {
+export const Article: FunctionalComponent<Context.Article> & {
 	SelfLink: typeof SelfLink
 	Aside: typeof Aside
 	Content: typeof Content
@@ -16,13 +16,9 @@ export const Article: FunctionalComponent<Context.Article<VNode>> & {
 	Header: typeof Header
 	Section: typeof Section
 	Summary: typeof Summary
-	override: FunctionalComponent<Context.Article<VNode>>
+	override: FunctionalComponent<Context.Article>
 } = (properties, children, utils) => Article.override(properties, children, utils)
-Article.override = (
-	article: Context.Article<VNode>,
-	children: VNode[],
-	_: FunctionalUtilities
-): VNode | VNode[] | null => (
+Article.override = (article: Context.Article, children: VNode[], _: FunctionalUtilities): VNode | VNode[] | null => (
 	<Fragment>
 		{article.mode == "none" ? null : (
 			<article id={article.id} class={`mode-${article.mode}`}>
