@@ -9,6 +9,11 @@ export const config: Config = {
 			customElementsExportBehavior: "auto-define-custom-elements",
 			externalRuntime: false
 		},
-		{ type: "docs-readme" }
+		{ type: "docs-readme" },
+		{
+			type: "www",
+			serviceWorker: null,
+			baseUrl: "/"
+		}
 	]
 }
