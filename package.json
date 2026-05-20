@@ -11,19 +11,11 @@
 	"exports": {
 		".": {
 			"types": "./dist/types/index.d.ts",
-			"import": "./dist/index.js"
+			"import": "./dist/binotype/index.esm.js"
 		},
 		"./parser": {
 			"types": "./dist/types/index.d.ts",
-			"import": "./dist/index.js"
-		},
-		"./components": {
-			"import": "./dist/collection/components/index.js",
-			"types": "./dist/types/components/index.d.ts"
-		},
-		"./components/*": {
-			"import": "./dist/components/*.js",
-			"types": "./dist/types/components/*.d.ts"
+			"import": "./dist/binotype/index.esm.js"
 		},
 		"./binotype-site": {
 			"import": "./dist/components/binotype-site.js",
